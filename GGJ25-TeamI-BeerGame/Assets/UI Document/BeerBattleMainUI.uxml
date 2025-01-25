@@ -1,0 +1,95 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Document/BattleUI.uss?fileID=7433441132597879392&amp;guid=cf36f6be9d821ac4098bc64a3e16566e&amp;type=3#BattleUI" />
+    <ui:VisualElement name="MainBackGround" style="flex-grow: 1;">
+        <ui:VisualElement name="CustomerPanel" style="flex-grow: 1; height: 25%; flex-direction: row;">
+            <ui:VisualElement name="CustomerLeftPanel" style="flex-grow: 1; height: 94px; width: 356px; background-color: rgba(0, 0, 0, 0.4); flex-direction: row;">
+                <ui:Label text="剩餘顧客:" name="CustomerLeftTitle" enabled="true" style="font-size: 50px; -unity-font-style: bold; background-color: rgba(255, 255, 255, 0); align-self: center; left: 10px; width: 229px;" />
+                <ui:Label text="7" name="CustomerLeft" style="font-size: 60px; -unity-font-style: bold; background-color: rgba(255, 255, 255, 0); align-self: flex-start; left: 15px; -unity-text-align: middle-center; color: rgb(255, 198, 0); width: 83px; height: 85px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="CustomerMainPanel" style="flex-grow: 1; width: 70%;">
+                <ui:VisualElement name="CustomerReuqestPanel" style="flex-grow: 1; right: 0; height: 100%; width: 35%; position: absolute; top: -1px; left: auto; bottom: auto;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="TimerPanel" style="flex-grow: 1; width: 15%;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="PlayerPanel" style="flex-grow: 1; height: 75%; flex-direction: row;">
+            <ui:VisualElement name="Player1Panel" style="flex-grow: 1; width: 50%; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-width: 2px;">
+                <ui:Label text="20%" name="P1BubbleRatio" enabled="true" style="position: absolute; height: 86px; top: 300px; width: 178px; left: 700px; font-size: 50px; -unity-font-style: bold; align-self: flex-start; -unity-text-align: middle-center; color: rgb(255, 0, 0);" />
+                <ui:Label text="選酒種" name="P1Phase" enabled="true" style="position: absolute; height: 50px; top: 0; width: 270px; left: 0; font-size: 40px; -unity-font-style: bold; align-self: flex-start; -unity-text-align: middle-center; color: rgb(27, 27, 27); background-color: rgba(0, 0, 0, 0.3); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                <ui:VisualElement name="SelectPanel" style="flex-grow: 1; height: 70%; flex-direction: row;">
+                    <ui:VisualElement name="P1PointPanel" style="flex-grow: 1; width: 5%; visibility: visible; align-self: center; background-image: none; -unity-text-align: upper-left; height: 500px; justify-content: flex-start; top: 30px;">
+                        <ui:VisualElement name="P1Point1" style="flex-grow: initial; height: 50px; width: 50px;" />
+                        <ui:VisualElement name="P1Point2" style="flex-grow: initial; height: 50px; width: 50px;" />
+                        <ui:VisualElement name="P1Point3" style="flex-grow: initial; height: 50px; width: 50px;" />
+                        <ui:VisualElement name="P1Point4" style="flex-grow: initial; height: 50px; width: 50px;" />
+                        <ui:VisualElement name="P1Point5" style="flex-grow: initial; height: 50px; width: 50px;" />
+                        <ui:VisualElement name="P1Point6" style="flex-grow: initial; height: 50px; width: 50px;" />
+                        <ui:VisualElement name="P1Point7" style="flex-grow: initial; height: 50px; width: 50px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="P1LeftSelect" style="flex-grow: 1; width: 15%; visibility: visible; align-self: center; background-image: none; -unity-text-align: upper-left; height: 30%;" />
+                    <ui:VisualElement name="P1SelectPicture" style="flex-grow: 1; width: 65%; height: 90%; align-self: flex-end; background-color: rgba(0, 0, 0, 0.5); -unity-background-image-tint-color: rgb(255, 255, 255); background-image: url(&quot;project://database/Assets/Image/%E7%8E%BB%E7%92%83%E7%93%B6.png?fileID=-7184528869783947823&amp;guid=0b98fd7eff540e64683de77438b3d108&amp;type=3#玻璃瓶_0&quot;); background-size: 100% 100%; -unity-background-scale-mode: scale-to-fit;" />
+                    <ui:VisualElement name="P1RightSelect" style="flex-grow: 1; width: 15%; height: 30%; align-self: center;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="SkillMainPanel" style="flex-grow: 1; height: 30%; color: rgb(27, 27, 27); background-color: rgba(0, 0, 0, 0.4);">
+                    <ui:VisualElement name="SkillPanel" style="flex-grow: 1; height: 80%; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: space-around;">
+                        <ui:VisualElement name="P1Skill1" style="flex-grow: initial; width: 30%; flex-shrink: initial; background-color: rgba(255, 255, 255, 0.1); margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">
+                            <ui:Label text="干擾技能" name="P1S1Name" style="align-self: center; width: auto; height: 20%; -unity-text-align: middle-center; font-size: 30px; -unity-font-style: bold; background-color: rgba(255, 255, 255, 0);">
+                                <ui:VisualElement name="P1SelectPicture" style="flex-grow: 1; width: 65%; height: 90%; align-self: flex-end;" />
+                            </ui:Label>
+                            <ui:VisualElement name="P1S1Picture" style="flex-grow: 1; height: 60%; background-size: 100% 100%; width: 60%; align-self: center;" />
+                            <ui:Label text="Z" name="PIS1KeyBoard" style="height: 20%; align-self: center; -unity-text-align: middle-center; font-size: 30px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="P1Skill2" style="flex-grow: initial; width: 30%; flex-shrink: initial; background-color: rgba(255, 255, 255, 0.1); margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">
+                            <ui:Label text="干擾技能" name="P1S2Name" style="align-self: center; width: auto; height: 20%; -unity-text-align: middle-center; font-size: 30px; -unity-font-style: bold;" />
+                            <ui:VisualElement name="P1S2Picture" style="flex-grow: 1; height: 60%; background-size: 100% 100%; width: 60%; align-self: center;" />
+                            <ui:Label text="X" name="PIS2KeyBoard" style="height: 20%; align-self: center; -unity-text-align: middle-center; font-size: 30px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="P1Skill3" style="flex-grow: initial; width: 30%; flex-shrink: initial; background-color: rgba(255, 255, 255, 0.1); margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">
+                            <ui:Label text="干擾技能" name="P1S3Name" style="align-self: center; width: auto; height: 20%; -unity-text-align: middle-center; font-size: 30px; -unity-font-style: bold;" />
+                            <ui:VisualElement name="P1S3Picture" style="flex-grow: 1; height: 60%; background-size: 100% 100%; width: 60%; align-self: center;" />
+                            <ui:Label text="C" name="PIS3KeyBoard" style="height: 20%; align-self: center; -unity-text-align: middle-center; font-size: 30px;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:Label text="3" name="P1TimeCount" style="position: absolute; height: 185px; top: 3px; width: 227px; left: 350px; font-size: 200px; -unity-font-style: bold; align-self: flex-start; -unity-text-align: middle-center; color: rgb(255, 0, 0);" />
+            <ui:VisualElement name="Player2Panel" style="flex-grow: 1; width: 50%; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-width: 2px;">
+                <ui:Label text="20%" name="P2BubbleRatio" style="position: absolute; height: 86px; top: 300px; width: 178px; left: 700px; font-size: 50px; -unity-font-style: bold; align-self: flex-start; -unity-text-align: middle-center; color: rgb(255, 0, 0);" />
+                <ui:Label text="選酒種" name="P2Phase" enabled="true" style="position: absolute; height: 50px; top: 0; width: 270px; left: 0; font-size: 40px; -unity-font-style: bold; align-self: flex-start; -unity-text-align: middle-center; color: rgb(27, 27, 27); background-color: rgba(0, 0, 0, 0.3); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                <ui:VisualElement name="SelectPanel" style="flex-grow: 1; height: 70%; flex-direction: row;">
+                    <ui:VisualElement name="P2LeftSelect" style="flex-grow: 1; width: 15%; visibility: visible; align-self: center; background-image: none; -unity-text-align: upper-left; height: 30%;" />
+                    <ui:VisualElement name="P2SelectPicture" style="flex-grow: 1; width: 65%; height: 90%; align-self: flex-end; background-image: url(&quot;project://database/Assets/Image/%E9%8B%81%E7%BD%90.png?fileID=5753882289245731343&amp;guid=761a891ef9729384a8486784e86feb38&amp;type=3#鋁罐_0&quot;); -unity-background-scale-mode: scale-to-fit; background-color: rgba(0, 0, 0, 0.5);" />
+                    <ui:VisualElement name="P2RightSelect" style="flex-grow: 1; width: 15%; height: 30%; align-self: center;" />
+                    <ui:VisualElement name="P2PointPanel" style="flex-grow: 1; width: 5%; visibility: visible; align-self: center; background-image: none; -unity-text-align: upper-left; height: 500px; top: 30px;">
+                        <ui:VisualElement name="P2Point1" style="flex-grow: initial; height: 50px; width: 50px;" />
+                        <ui:VisualElement name="P2Point2" style="flex-grow: initial; height: 50px; width: 50px;" />
+                        <ui:VisualElement name="P2Point3" style="flex-grow: initial; height: 50px; width: 50px;" />
+                        <ui:VisualElement name="P2Point4" style="flex-grow: initial; height: 50px; width: 50px;" />
+                        <ui:VisualElement name="P2Point5" style="flex-grow: initial; height: 50px; width: 50px;" />
+                        <ui:VisualElement name="P2Point6" style="flex-grow: initial; height: 50px; width: 50px;" />
+                        <ui:VisualElement name="P2Point7" style="flex-grow: initial; height: 50px; width: 50px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="SkillMainPanel" style="flex-grow: 1; height: 30%; color: rgb(27, 27, 27); background-color: rgba(0, 0, 0, 0.4);">
+                    <ui:VisualElement name="SkillPanel" style="flex-grow: 1; height: 80%; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: space-around;">
+                        <ui:VisualElement name="P2Skill1" style="flex-grow: initial; width: 30%; flex-shrink: initial; background-color: rgba(255, 255, 255, 0.1); margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">
+                            <ui:Label text="干擾技能" name="P2S1Name" style="align-self: center; width: auto; height: 20%; -unity-text-align: middle-center; font-size: 30px; -unity-font-style: bold; background-color: rgba(255, 255, 255, 0);" />
+                            <ui:VisualElement name="P2S1Picture" style="flex-grow: 1; height: 60%; background-size: 100% 100%; width: 60%; align-self: center;" />
+                            <ui:Label text="1" name="P2S1KeyBoard" style="height: 20%; align-self: center; -unity-text-align: middle-center; font-size: 30px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="P2Skill2" style="flex-grow: initial; width: 30%; flex-shrink: initial; background-color: rgba(255, 255, 255, 0.1); margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">
+                            <ui:Label text="干擾技能" name="P2S2Name" style="align-self: center; width: auto; height: 20%; -unity-text-align: middle-center; font-size: 30px; -unity-font-style: bold;" />
+                            <ui:VisualElement name="P2S2Picture" style="flex-grow: 1; height: 60%; background-size: 100% 100%; width: 60%; align-self: center;" />
+                            <ui:Label text="2" name="P2S2KeyBoard" style="height: 20%; align-self: center; -unity-text-align: middle-center; font-size: 30px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="P2Skill3" style="flex-grow: initial; width: 30%; flex-shrink: initial; background-color: rgba(255, 255, 255, 0.1); margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">
+                            <ui:Label text="干擾技能" name="P2S3Name" style="align-self: center; width: auto; height: 20%; -unity-text-align: middle-center; font-size: 30px; -unity-font-style: bold;" />
+                            <ui:VisualElement name="P2S3Picture" style="flex-grow: 1; height: 60%; background-size: 100% 100%; width: 60%; align-self: center;" />
+                            <ui:Label text="3" name="P2S3KeyBoard" style="height: 20%; align-self: center; -unity-text-align: middle-center; font-size: 30px;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:Label text="3" name="P2TimeCount" style="position: absolute; height: 180px; top: 3px; width: 225px; left: 350px; font-size: 200px; -unity-font-style: bold; align-self: flex-start; -unity-text-align: middle-center; color: rgb(255, 0, 0);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

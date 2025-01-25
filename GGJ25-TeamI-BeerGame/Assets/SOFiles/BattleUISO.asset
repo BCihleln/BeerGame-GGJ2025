@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9786b04e927c7f41abedd42bbdf32fe, type: 3}
+  m_Name: BattleUISO
+  m_EditorClassIdentifier: 
+  phaseName:
+  - "\u9078\u9152\u7A2E:"
+  - "\u9078\u9152\u676F:"
+  - "\u5012\u9152:"
+  beerPicture:
+  - {fileID: -850384010442605852, guid: 8d3c98b00bab5f6449ab72085d9622cf, type: 3}
+  - {fileID: -7184528869783947823, guid: 0b98fd7eff540e64683de77438b3d108, type: 3}
+  - {fileID: 5753882289245731343, guid: 761a891ef9729384a8486784e86feb38, type: 3}
+  cupPicture:
+  - {fileID: -8832241947913138024, guid: 2197ba4641c36694fb71203628975795, type: 3}
+  - {fileID: -4433469641421908972, guid: aa54b9952faa6434a95ccca9c286a198, type: 3}
+  - {fileID: 7230850484436661685, guid: 879aa22762031234d8d9125fc8bfed68, type: 3}
+  skillName: []
+  skillPicture: []

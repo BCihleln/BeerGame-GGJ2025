@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca3fd4c0cc5979488cfd9540c55a70f, type: 3}
+  m_Name: SkillSO
+  m_EditorClassIdentifier: 
+  skillNames:
+  - "\u6416\u6643\u5225\u4EBA\u684C\u5B50"
+  - "\u906E\u64CB\u5C0D\u65B9\u676F\u5B50"
+  - "\u64CD\u4F5C\u6253\u4E82"
+  - "\u4E7E\u5764\u5927\u632A\u79FB"
+  - "\u9452\u5B9A\u773C"
+  - "\u91CD\u5F71"
+  skillPictures:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  skillScribe:
+  - "\u5C0D\u65B9\u676F\u5B50\u6703\u5DE6\u53F3\u79FB\u52D5"
+  - "\u5C0D\u65B9\u7121\u6CD5\u770B\u5230\u81EA\u5DF1\u676F\u4E2D\u7684\u9152\u6CAB\u60C5\u6CC1"
+  - "\u96A8\u6A5F\u6253\u4E82\u5C0D\u624B\u7684\u6309\u9375\u8207\u4EA4\u4E92\u7684\u6620\u5C04"
+  - "\u4EA4\u63DB\u96D9\u65B9\u7684\u676F\u5B50\u4F5C\u7232\u81EA\u5DF1\u7684\u7D50\u679C"
+  - "\u986F\u793A\u81EA\u5DF1\u7684\u9152\u6CE1\u6BD4\u4F8B\u5177\u9AD4\u6578\u503C"
+  - "\u5C0D\u624B\u676F\u5B50\u7522\u751F\u91CD\u5F71\uFF0C\u4F7F\u5C0D\u624B\u96E3\u4EE5\u5224\u65B7\u54EA\u500B\u662F\u6B63\u78BA\u7684\u676F\u5B50"
