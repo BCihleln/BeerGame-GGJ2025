@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class BeerHandler : MonoBehaviour
 {
@@ -76,7 +77,6 @@ public class BeerHandler : MonoBehaviour
         {
             verticalInput = recoverSpeed;
         }
-
         transform.position += (new Vector3(1, 0, 0) * horizontalInput * moveSpeed * Time.deltaTime);
         transform.Rotate(new Vector3(0, 0, 1) * verticalInput * rotationSpeed * Time.deltaTime);
         float zRotation = transform.eulerAngles.z;
