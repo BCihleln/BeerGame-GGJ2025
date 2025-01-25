@@ -575,6 +575,7 @@ GameObject:
   - component: {fileID: 381748063}
   - component: {fileID: 381748062}
   - component: {fileID: 381748064}
+  - component: {fileID: 381748065}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -626,6 +627,22 @@ MonoBehaviour:
   P1SkillBtn: 122
   P2SkillBtn: 44
   moveSpeed: 0.1
+  cupP1: {fileID: 1709853497}
+  cupP2: {fileID: 143642194}
+--- !u!114 &381748065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381748061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a552e5ed5da4aeab1c3588be192ccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  P1SkillBtn: 99
+  P2SkillBtn: 46
   cupP1: {fileID: 1709853497}
   cupP2: {fileID: 143642194}
 --- !u!1 &519420028

@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class shakingSkill : MonoBehaviour
+public class ShakingSkill : MonoBehaviour
 {
     public UnityEngine.KeyCode P1SkillBtn = KeyCode.Z;
     public UnityEngine.KeyCode P2SkillBtn = KeyCode.Comma;
-    public float moveSpeed = 5f;
+    public float moveSpeed = 50f;
 
     public CupHandler cupP1;
     public CupHandler cupP2;
