@@ -14,6 +14,12 @@ public class BeerHandler : MonoBehaviour
     private float forwardSpeed = 1.6f;
     private float recoverSpeed = -0.8f;
 
+    public Bottles chosenBottle;
+
+    private void Start() {
+        gameObject.GetComponent<SpriteRenderer>().sprite = chosenBottle.bottleSprite;
+    }
+
     private void Update()
     {
         if(playerID == 1){

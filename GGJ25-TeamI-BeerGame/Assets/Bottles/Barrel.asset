@@ -12,6 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42b51f2eea28144b8ab429ab1da9101, type: 3}
   m_Name: Barrel
   m_EditorClassIdentifier: 
-  thresholdAngle: []
-  foamPercentage: []
-  speedFactor: 0
+  thresholdAngle:
+  - 30
+  - 50
+  - 70
+  foamPercentage:
+  - 0
+  - 0.3
+  - 0.6
+  - 0.9
+  beerPercentage:
+  - 0
+  - 0.7
+  - 0.4
+  - 0.1
+  speedFactor: 1.2
+  bottleSprite: {fileID: -850384010442605852, guid: f314abb6baf3c8c438199881dcbc0611, type: 3}
+  offset: {x: -3.4, y: 5.6, z: 0}

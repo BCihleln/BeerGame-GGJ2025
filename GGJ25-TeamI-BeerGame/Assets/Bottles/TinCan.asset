@@ -13,11 +13,19 @@ MonoBehaviour:
   m_Name: TinCan
   m_EditorClassIdentifier: 
   thresholdAngle:
-  - 0
-  - 0
-  - 0
+  - 10
+  - 20
+  - 50
   foamPercentage:
   - 0
   - 0
+  - 0.3
+  - 0.7
+  beerPercentage:
   - 0
-  speedFactor: 0.5
+  - 1
+  - 0.7
+  - 0.3
+  speedFactor: 0.8
+  bottleSprite: {fileID: 5753882289245731343, guid: e004b7d1a2f01be4ea7ac3b4e988f887, type: 3}
+  offset: {x: -0.7, y: 3.2, z: 0}
