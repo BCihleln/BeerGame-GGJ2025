@@ -2,6 +2,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using System.Drawing;
 
 public class CupHandler : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class CupHandler : MonoBehaviour
     public SpriteRenderer streamRenderer;
     private float streamThreshold = 30f;
 
-    public Bottles chosenBottle;
+    private Bottles chosenBottle;
 
     // private float bubbleDecayRate = 0.01f;
 
@@ -99,6 +100,9 @@ public class CupHandler : MonoBehaviour
     public void Restart(){
         curBubble = 0f;
         curFluid = 0f;
+        chosenBottle = canTransform.gameObject.GetComponent<BeerHandler>().chosenBottle;
+        streamRenderer.transform.localPosition = chosenBottle.offset;
+        pourPoint.localPosition = chosenBottle.offset;
         AdjustScale();
     }
 }

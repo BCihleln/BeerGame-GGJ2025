@@ -12,6 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42b51f2eea28144b8ab429ab1da9101, type: 3}
   m_Name: GlassBottle
   m_EditorClassIdentifier: 
-  thresholdAngle: []
-  foamPercentage: []
-  speedFactor: 0
+  thresholdAngle:
+  - 10
+  - 30
+  - 60
+  foamPercentage:
+  - 0
+  - 0.2
+  - 0.5
+  - 0.8
+  beerPercentage:
+  - 1
+  - 0.8
+  - 0.5
+  - 0.2
+  speedFactor: 1
+  bottleSprite: {fileID: -7184528869783947823, guid: 5b13dba134a51c54e9c02d4dcdbfbdfb, type: 3}
+  offset: {x: 0.2, y: 7.8, z: 0}
