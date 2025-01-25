@@ -11,13 +11,13 @@ public class CupHandler : MonoBehaviour
     public Transform cupEdgeR;
     public Transform pourPoint;
 
-    private float maxVolume = 200000f;
+    private float maxVolume = 80000f;
     private float curBubble = 0f;
     private float curFluid = 0f;
 
     public Transform fluid;
     public Transform bubble;
-    private float maxFluidHeight = 5f;
+    private float maxFluidHeight = 0.85f;
     public Sprite drip;
     public Sprite stream;
     public SpriteRenderer streamRenderer;
