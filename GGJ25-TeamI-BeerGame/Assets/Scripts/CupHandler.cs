@@ -1,6 +1,7 @@
 using Unity.Mathematics;
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 public class CupHandler : MonoBehaviour
 {
@@ -9,34 +10,35 @@ public class CupHandler : MonoBehaviour
     public Transform cupEdgeR;
     public Transform pourPoint;
 
-    private float maxVolume = 1500f;
+    private float maxVolume = 200000f;
     private float curBubble = 0f;
     private float curFluid = 0f;
 
     public Transform fluid;
     public Transform bubble;
     private float maxFluidHeight = 5f;
-
-    private float thresholdAngle = 105f;
-    private float speedFactor = 0.05f;
-
     public Sprite drip;
     public Sprite stream;
     public SpriteRenderer streamRenderer;
-    private float streamThreshold = 1f;
+    private float streamThreshold = 30f;
+
+    public Bottles chosenBottle;
+
+    // private float bubbleDecayRate = 0.01f;
 
     private void Start() {
         Restart();
     }
 
     private void Update() {
-        float fluidSpeed = GetPouringSpeed(canTransform.eulerAngles.z);
-        float bubbleSpeed = GetPouringSpeed(canTransform.eulerAngles.z)/2;
-        //Debug.Log(fluidSpeed);
-        if(fluidSpeed > streamThreshold){
+        List<float> getSpeed = GetPouringSpeed(canTransform.eulerAngles.z);
+        float fluidSpeed = getSpeed[0];
+        float bubbleSpeed = getSpeed[1];
+        Debug.Log((fluidSpeed+bubbleSpeed));
+        if((fluidSpeed+bubbleSpeed) > streamThreshold){
             streamRenderer.sprite = stream;
         }
-        else if(fluidSpeed > 0){
+        else if((fluidSpeed+bubbleSpeed) > 0){
             streamRenderer.sprite = drip;
         }
         else{
@@ -47,6 +49,7 @@ public class CupHandler : MonoBehaviour
             curBubble += bubbleSpeed;
             AdjustScale();
         }
+        // DecayBubbles();
     }
 
     private void AdjustScale(){
@@ -57,13 +60,32 @@ public class CupHandler : MonoBehaviour
         bubble.localScale = new Vector3(1, bubbleScale, 1);
     }
 
-    private float GetPouringSpeed(float tiltAngle)
+    private List<float> GetPouringSpeed(float tiltAngle)
     {
-        if (tiltAngle <= thresholdAngle) return 0f;
-        else{
-            return (tiltAngle - thresholdAngle) * speedFactor;
+        List<float> returnVal = new List<float> { 0f, 0f };
+        tiltAngle-=90f;
+        tiltAngle = math.max(tiltAngle, 0f);
+        returnVal[0] = tiltAngle * chosenBottle.speedFactor * chosenBottle.beerPercentage[0];
+        returnVal[1] = tiltAngle * chosenBottle.speedFactor * chosenBottle.foamPercentage[0];
+        for (int i = chosenBottle.thresholdAngle.Count-1; i >= 0 ; i--) {
+            if (tiltAngle > chosenBottle.thresholdAngle[i]) {
+                returnVal[0] = (tiltAngle) * chosenBottle.speedFactor * chosenBottle.beerPercentage[i+1];
+                returnVal[1] = (tiltAngle) * chosenBottle.speedFactor * chosenBottle.foamPercentage[i+1];
+                break;
+            }
         }
+        return returnVal;
     }
+
+    // private void DecayBubbles()
+    // {
+    //     if (curBubble > 0)
+    //     {
+    //         curBubble -= curBubble * bubbleDecayRate * Time.deltaTime;
+    //         curBubble = math.max(curBubble, 0);
+    //         AdjustScale();
+    //     }
+    // }
 
     public bool IsFull(){
         return curBubble+curFluid > maxVolume;

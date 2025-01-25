@@ -8,7 +8,10 @@ public class BeerHandler : MonoBehaviour
     public Transform stream;
 
     private float pourUpperLimit = 80f;
-    private float pourLowerLimit = 150f;
+    private float pourLowerLimit = 180f;
+
+    private float forwardSpeed = 1.6f;
+    private float recoverSpeed = -0.8f;
 
     private void Update()
     {
@@ -37,11 +40,11 @@ public class BeerHandler : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            verticalInput = 1f;
+            verticalInput = forwardSpeed;
         }
-        else if (Input.GetKey(KeyCode.S))
+        else
         {
-            verticalInput = -1f;
+            verticalInput = recoverSpeed;
         }
 
         transform.position += (new Vector3(1, 0, 0) * horizontalInput * moveSpeed * Time.deltaTime);
@@ -67,11 +70,11 @@ public class BeerHandler : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            verticalInput = 1f;
-        }
-        else if (Input.GetKey(KeyCode.DownArrow))
+            verticalInput = forwardSpeed;
+        } 
+        else 
         {
-            verticalInput = -1f;
+            verticalInput = recoverSpeed;
         }
 
         transform.position += (new Vector3(1, 0, 0) * horizontalInput * moveSpeed * Time.deltaTime);
