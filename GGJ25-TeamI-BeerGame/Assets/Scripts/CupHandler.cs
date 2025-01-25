@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Runtime.CompilerServices;
 
 public class CupHandler : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class CupHandler : MonoBehaviour
         List<float> getSpeed = GetPouringSpeed(canTransform.eulerAngles.z);
         float fluidSpeed = getSpeed[0];
         float bubbleSpeed = getSpeed[1];
-        Debug.Log((fluidSpeed+bubbleSpeed));
+        //Debug.Log((fluidSpeed+bubbleSpeed));
         if((fluidSpeed+bubbleSpeed) > streamThreshold){
             streamRenderer.sprite = stream;
         }
@@ -96,6 +97,9 @@ public class CupHandler : MonoBehaviour
         if((curBubble+curFluid)/maxVolume < 0.8f) return -1f;
         return curBubble/(curBubble+curFluid);
     }
+    public float GetSkillPercentage(){
+        return curBubble/(curBubble+curFluid);
+    }
 
     public void Restart(){
         curBubble = 0f;
@@ -105,4 +109,13 @@ public class CupHandler : MonoBehaviour
         pourPoint.localPosition = chosenBottle.offset;
         AdjustScale();
     }
+    private void ChangeCupPosition(float MoveSpeed, float DurationTime){
+        
+    }
+    public void MoveCupSkill(float MoveSpeed){
+        // Move the cup to the right for 1 second using ChangeCupPosition
+        ChangeCupPosition(MoveSpeed, 4f);
+        Debug.Log("Cup moved");
+    }
+    
 }
