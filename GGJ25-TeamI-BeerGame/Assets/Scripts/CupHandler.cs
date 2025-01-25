@@ -21,6 +21,8 @@ public class CupHandler : MonoBehaviour
     private float maxFluidHeight = 5f;
     public Sprite drip;
     public Sprite stream;
+    private float fluidSpeed = 0f;
+    private float bubbleSpeed = 0f;
     public SpriteRenderer streamRenderer;
     private float streamThreshold = 30f;
 
@@ -34,8 +36,8 @@ public class CupHandler : MonoBehaviour
 
     private void Update() {
         List<float> getSpeed = GetPouringSpeed(canTransform.eulerAngles.z);
-        float fluidSpeed = getSpeed[0];
-        float bubbleSpeed = getSpeed[1];
+        fluidSpeed = getSpeed[0];
+        bubbleSpeed = getSpeed[1];
         //Debug.Log((fluidSpeed+bubbleSpeed));
         if((fluidSpeed+bubbleSpeed) > streamThreshold){
             streamRenderer.sprite = stream;
@@ -100,7 +102,9 @@ public class CupHandler : MonoBehaviour
     public float GetSkillPercentage(){
         return curBubble/(curBubble+curFluid);
     }
-
+    public bool GetPouringStatus(){
+        return fluidSpeed+bubbleSpeed > streamThreshold;
+    }
     public void Restart(){
         curBubble = 0f;
         curFluid = 0f;
