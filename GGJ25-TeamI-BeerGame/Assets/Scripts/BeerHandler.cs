@@ -3,10 +3,14 @@ using UnityEngine;
 public class BeerHandler : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public float rotationSpeed = 100f;
+    public float rotationSpeed = 25f;
     public int playerID;
+    public Transform stream;
 
-    private void FixedUpdate()
+    private float pourUpperLimit = 80f;
+    private float pourLowerLimit = 150f;
+
+    private void Update()
     {
         if(playerID == 1){
             P1InputUpdate();
@@ -14,6 +18,7 @@ public class BeerHandler : MonoBehaviour
         else{
             P2InputUpdate();
         }
+        stream.eulerAngles = new Vector3(0, 0, 0);
     }
 
     private void P1InputUpdate()
@@ -42,8 +47,8 @@ public class BeerHandler : MonoBehaviour
         transform.position += (new Vector3(1, 0, 0) * horizontalInput * moveSpeed * Time.deltaTime);
         transform.Rotate(new Vector3(0, 0, 1) * verticalInput * rotationSpeed * Time.deltaTime);
         float zRotation = transform.eulerAngles.z;
-        if (zRotation < 90) transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 90);
-        if (zRotation > 150) transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 150);
+        if (zRotation < pourUpperLimit) transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, pourUpperLimit);
+        if (zRotation > pourLowerLimit) transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, pourLowerLimit);
     }
 
     private void P2InputUpdate()
@@ -72,7 +77,7 @@ public class BeerHandler : MonoBehaviour
         transform.position += (new Vector3(1, 0, 0) * horizontalInput * moveSpeed * Time.deltaTime);
         transform.Rotate(new Vector3(0, 0, 1) * verticalInput * rotationSpeed * Time.deltaTime);
         float zRotation = transform.eulerAngles.z;
-        if (zRotation < 90) transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 90);
-        if (zRotation > 150) transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 150);
+        if (zRotation < pourUpperLimit) transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, pourUpperLimit);
+        if (zRotation > pourLowerLimit) transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, pourLowerLimit);
     }
 }

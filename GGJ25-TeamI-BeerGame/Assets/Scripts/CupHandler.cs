@@ -1,5 +1,6 @@
 using Unity.Mathematics;
 using UnityEngine;
+using TMPro;
 
 public class CupHandler : MonoBehaviour
 {
@@ -12,31 +13,38 @@ public class CupHandler : MonoBehaviour
     private float curBubble = 0f;
     private float curFluid = 0f;
 
-    //temp
-    private float fluidSpeed = 10f;
-    private float bubbleSpeed = 5f;
-
     public Transform fluid;
     public Transform bubble;
     private float maxFluidHeight = 5f;
 
-    private float thresholdAngle = 100f;
-    private float speedFactor = 0.2f;
+    private float thresholdAngle = 105f;
+    private float speedFactor = 0.05f;
+
+    public Sprite drip;
+    public Sprite stream;
+    public SpriteRenderer streamRenderer;
+    private float streamThreshold = 1f;
 
     private void Start() {
-        AdjustScale();
+        Restart();
     }
 
-    private void FixedUpdate() {
-        // Debug.Log(cupEdgeL.position.x);
+    private void Update() {
         float fluidSpeed = GetPouringSpeed(canTransform.eulerAngles.z);
         float bubbleSpeed = GetPouringSpeed(canTransform.eulerAngles.z)/2;
+        //Debug.Log(fluidSpeed);
+        if(fluidSpeed > streamThreshold){
+            streamRenderer.sprite = stream;
+        }
+        else if(fluidSpeed > 0){
+            streamRenderer.sprite = drip;
+        }
+        else{
+            streamRenderer.sprite = null;
+        }
         if(pourPoint.position.x >= cupEdgeL.position.x && pourPoint.position.x <= cupEdgeR.position.x){
             curFluid += fluidSpeed;
             curBubble += bubbleSpeed;
-            //over-pour should trigger some stuff in game manager, this is temp solution
-            curFluid = math.min(maxVolume, curFluid);
-            curBubble = math.min(maxVolume, curBubble);
             AdjustScale();
         }
     }
@@ -51,11 +59,24 @@ public class CupHandler : MonoBehaviour
 
     private float GetPouringSpeed(float tiltAngle)
     {
-        if (tiltAngle <= thresholdAngle){
-            return 0f;
-        }
+        if (tiltAngle <= thresholdAngle) return 0f;
         else{
             return (tiltAngle - thresholdAngle) * speedFactor;
         }
+    }
+
+    public bool IsFull(){
+        return curBubble+curFluid > maxVolume;
+    }
+
+    public float GetPercentage(){
+        if((curBubble+curFluid)/maxVolume < 0.8f) return -1f;
+        return curBubble/(curBubble+curFluid);
+    }
+
+    public void Restart(){
+        curBubble = 0f;
+        curFluid = 0f;
+        AdjustScale();
     }
 }
