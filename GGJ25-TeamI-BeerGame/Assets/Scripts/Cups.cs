@@ -15,4 +15,6 @@ public class Cups : ScriptableObject
     public float maxVolume;
     public float fillLine;
     public Sprite fillSprite;
+    public Sprite spillSprite;
+    public float spillHeight;
 }
