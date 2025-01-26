@@ -16,8 +16,25 @@ public class BeerHandler : MonoBehaviour
 
     public Bottles chosenBottle;
 
-    private void Start() {
+    public KeyCode LeftKey { get; set; }
+    public KeyCode RightKey { get; set; }
+    public KeyCode PourKey { get; set; }
+
+    private void Start()
+    {
         gameObject.GetComponent<SpriteRenderer>().sprite = chosenBottle.bottleSprite;
+        if (playerID == 1)
+        {
+            LeftKey = KeyCode.A;
+            RightKey = KeyCode.D;
+            PourKey = KeyCode.W;
+        }
+        else
+        {
+            LeftKey = KeyCode.LeftArrow;
+            RightKey = KeyCode.RightArrow;
+            PourKey = KeyCode.UpArrow;
+        }
     }
 
     private void Update()
@@ -36,16 +53,16 @@ public class BeerHandler : MonoBehaviour
         float horizontalInput = 0f;
         float verticalInput = 0f;
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(LeftKey))
         {
             horizontalInput = -1f;
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(RightKey))
         {
             horizontalInput = 1f;
         }
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(PourKey))
         {
             verticalInput = forwardSpeed;
         }
@@ -66,16 +83,16 @@ public class BeerHandler : MonoBehaviour
         float horizontalInput = 0f;
         float verticalInput = 0f;
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(LeftKey))
         {
             horizontalInput = -1f;
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(RightKey))
         {
             horizontalInput = 1f;
         }
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(PourKey))
         {
             verticalInput = forwardSpeed;
         } 
