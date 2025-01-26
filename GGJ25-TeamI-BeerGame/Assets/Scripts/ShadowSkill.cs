@@ -67,13 +67,6 @@ public class ShadowSkill : MonoBehaviour
         Destroy(fakeCup);
     }
 
-    void MoveCup(float offset)
-    {
-        Vector3 newPosition = cup.transform.position + new Vector3(offset, 0, 0);
-        newPosition.x = Mathf.Clamp(newPosition.x, -6f, 6f); // Adjust the values based on your screen bounds
-        cup.transform.position = newPosition;
-        fakeCupInstance.transform.position = newPosition + new Vector3(Random.Range(-4f, 4f), 0, 0);
-    }
 
     void MoveCupRandomly(CupHandler cup)
     {
