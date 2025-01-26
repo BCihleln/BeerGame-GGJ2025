@@ -57,7 +57,6 @@ public class CupHandler : MonoBehaviour
             curBubble += bubbleSpeed;
             AdjustScale();
         }
-        Debug.Log((curFluid+curBubble)/maxVolume);
         // DecayBubbles();
     }
 

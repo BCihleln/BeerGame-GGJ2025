@@ -7,6 +7,8 @@ public class PercentageSkill:MonoBehaviour
     public TMP_Text P2text;
     public CupHandler cupP1;
     public CupHandler cupP2;
+    public KeyCode P1SkillBtn = KeyCode.LeftShift;
+    public KeyCode P2SkillBtn = KeyCode.RightShift;
     private bool P1ShowPercentageSwitch = false;
     private bool P2ShowPercentageSwitch = false;
 
@@ -37,14 +39,14 @@ public class PercentageSkill:MonoBehaviour
         P2text.text = "P2: " + (cupP2.GetSkillPercentage()*100).ToString() + "%";
     }
     private void CheckSkillActivationP1(){
-        if (Input.GetKeyDown(KeyCode.X)){
+        if (Input.GetKeyDown(P1SkillBtn)){
             // Activate skill
             P1text.gameObject.SetActive(true);
             P1ShowPercentageSwitch = true;
         }
     }
     private void CheckSkillActivationP2(){
-        if (Input.GetKeyDown(KeyCode.RightShift)){
+        if (Input.GetKeyDown(P2SkillBtn)){
             // Activate skill
             P2text.gameObject.SetActive(true);
             P2ShowPercentageSwitch = true;
