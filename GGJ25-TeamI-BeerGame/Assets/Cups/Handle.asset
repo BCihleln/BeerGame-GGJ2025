@@ -21,8 +21,8 @@ MonoBehaviour:
   - {fileID: 4444805197730084874, guid: 4d74b11071d6d2f47803ec7e049aa80c, type: 3}
   - {fileID: 8773531456999010656, guid: 09a55f8b8c0e44e41b30caf6eb79dd72, type: 3}
   maxHeight: 1
-  fluidHeight: -1.36
+  fluidHeight: 1.28
   bubbleHeight: 5.03
   maxVolume: 200000
-  fillLine: 2.03
+  fillLine: 4.73
   fillSprite: {fileID: 21300000, guid: 7d4bc788ac9d8d74883a6175be6a765d, type: 3}
