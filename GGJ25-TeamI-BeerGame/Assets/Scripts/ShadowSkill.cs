@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class ShadowSkill : MonoBehaviour
 {
@@ -45,6 +46,7 @@ public class ShadowSkill : MonoBehaviour
         fakeCupInstance = Instantiate(fakeCupPrefab, cup.transform.position, cup.transform.rotation);
         fakeCupInstance.GetComponent<CupHandler>().enabled = false; // Disable CupHandler to prevent interaction with beer
         fakeCupInstance.transform.position += new Vector3(Random.Range(-4f, 4f), 0, 0);
+        StartCoroutine(RemoveFakeCupAfterDelay(fakeCupInstance, 4f));
     }
 
     void CreateFakeCupP2()
@@ -56,6 +58,13 @@ public class ShadowSkill : MonoBehaviour
         fakeCupInstanceP2 = Instantiate(fakeCupPrefabP2, cupP2.transform.position, cupP2.transform.rotation);
         fakeCupInstanceP2.GetComponent<CupHandler>().enabled = false; // Disable CupHandler to prevent interaction with beer
         fakeCupInstanceP2.transform.position += new Vector3(Random.Range(-4f, 4f), 0, 0);
+        StartCoroutine(RemoveFakeCupAfterDelay(fakeCupInstanceP2, 4f));
+    }
+
+    IEnumerator RemoveFakeCupAfterDelay(GameObject fakeCup, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(fakeCup);
     }
 
     void MoveCup(float offset)
