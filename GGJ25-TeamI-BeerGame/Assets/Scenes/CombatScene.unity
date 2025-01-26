@@ -2669,9 +2669,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4575666039824226391}
     - target: {fileID: 5405189548568093263, guid: cc095a628c439fd4cb54126325d946bd, type: 3}
+      propertyPath: pourPoint2
+      value: 
+      objectReference: {fileID: 437729307}
+    - target: {fileID: 5405189548568093263, guid: cc095a628c439fd4cb54126325d946bd, type: 3}
       propertyPath: canTransform
       value: 
       objectReference: {fileID: 3856759322221469175}
+    - target: {fileID: 5405189548568093263, guid: cc095a628c439fd4cb54126325d946bd, type: 3}
+      propertyPath: canTransform2
+      value: 
+      objectReference: {fileID: 852471886}
     - target: {fileID: 5405189548568093263, guid: cc095a628c439fd4cb54126325d946bd, type: 3}
       propertyPath: streamRenderer
       value: 
@@ -2774,9 +2782,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 437729307}
     - target: {fileID: 1441595681116417049, guid: 0e039b7ffae9c6448bc4a8561cf40c6a, type: 3}
+      propertyPath: pourPoint2
+      value: 
+      objectReference: {fileID: 4575666039824226391}
+    - target: {fileID: 1441595681116417049, guid: 0e039b7ffae9c6448bc4a8561cf40c6a, type: 3}
       propertyPath: canTransform
       value: 
       objectReference: {fileID: 852471886}
+    - target: {fileID: 1441595681116417049, guid: 0e039b7ffae9c6448bc4a8561cf40c6a, type: 3}
+      propertyPath: canTransform2
+      value: 
+      objectReference: {fileID: 3856759322221469175}
     - target: {fileID: 1441595681116417049, guid: 0e039b7ffae9c6448bc4a8561cf40c6a, type: 3}
       propertyPath: streamRenderer
       value: 
