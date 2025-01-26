@@ -5,9 +5,11 @@ using UnityEngine;
 public class RequestGenerator : MonoBehaviour
 {
     public GameObject requestCup;
+    public GameObject customer;
     public List<Sprite> spriteList0 = new List<Sprite>();
     public List<Sprite> spriteList1 = new List<Sprite>();
     public List<Sprite> spriteList2 = new List<Sprite>();
+    public List<Sprite> customerList = new List<Sprite>();
     public TMP_Text testingText;
 
     private void Start() {
@@ -22,6 +24,7 @@ public class RequestGenerator : MonoBehaviour
 
     public float NewRequest()
     {
+        customer.GetComponent<SpriteRenderer>().sprite = customerList[Random.Range(0,2)];
         int drinkPick = Random.Range(0, 3);
         int cupPick = Random.Range(0, 3);
         float secondPick = 0;
