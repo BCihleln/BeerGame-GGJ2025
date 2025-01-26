@@ -113,6 +113,9 @@ public class CupHandler : MonoBehaviour
     public void Restart(){
         curBubble = 0f;
         curFluid = 0f;
+        SetSprites();
+    }
+    private void SetSprites(){
         chosenBottle = canTransform.gameObject.GetComponent<BeerHandler>().chosenBottle;
         streamRenderer.transform.localPosition = chosenBottle.offset;
         pourPoint.localPosition = chosenBottle.offset;
@@ -180,6 +183,8 @@ public class CupHandler : MonoBehaviour
         public float fluidSpeed;
         public float bubbleSpeed;
         public Bottles chosenBottle;
+
+        public Cups chosenCup;
     }
 
     public CupData GetData()
@@ -190,7 +195,8 @@ public class CupHandler : MonoBehaviour
             curFluid = this.curFluid,
             fluidSpeed = this.fluidSpeed,
             bubbleSpeed = this.bubbleSpeed,
-            chosenBottle = this.chosenBottle
+            chosenBottle = this.chosenBottle,
+            chosenCup = this.chosenCup
         };
     }
 
@@ -201,6 +207,8 @@ public class CupHandler : MonoBehaviour
         this.fluidSpeed = data.fluidSpeed;
         this.bubbleSpeed = data.bubbleSpeed;
         this.chosenBottle = data.chosenBottle;
+        this.chosenCup = data.chosenCup;
+        this.SetSprites();
         AdjustScale();
     }
     
