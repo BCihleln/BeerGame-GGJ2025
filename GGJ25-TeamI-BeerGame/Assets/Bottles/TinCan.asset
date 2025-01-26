@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42b51f2eea28144b8ab429ab1da9101, type: 3}
   m_Name: TinCan
   m_EditorClassIdentifier: 
+  fluidID: 2
   thresholdAngle:
   - 10
   - 20
@@ -28,4 +29,6 @@ MonoBehaviour:
   - 0.3
   speedFactor: 0.8
   bottleSprite: {fileID: 5753882289245731343, guid: e004b7d1a2f01be4ea7ac3b4e988f887, type: 3}
-  offset: {x: -0.7, y: 3.2, z: 0}
+  offset: {x: -0.3, y: 3.5, z: 0}
+  streamSprite: {fileID: -7265484682217735617, guid: e175c2757c147ee4ca18d8da81ed14da, type: 3}
+  dripSprite: {fileID: -8489766732707969921, guid: 3598a11de317f844db16771a6613cbc6, type: 3}

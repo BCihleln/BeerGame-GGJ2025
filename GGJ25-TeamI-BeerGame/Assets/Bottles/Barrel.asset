@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42b51f2eea28144b8ab429ab1da9101, type: 3}
   m_Name: Barrel
   m_EditorClassIdentifier: 
+  fluidID: 0
   thresholdAngle:
-  - 30
-  - 50
-  - 70
+  - 20
+  - 40
+  - 60
   foamPercentage:
   - 0
   - 0.3
@@ -28,4 +29,6 @@ MonoBehaviour:
   - 0.1
   speedFactor: 1.2
   bottleSprite: {fileID: -850384010442605852, guid: f314abb6baf3c8c438199881dcbc0611, type: 3}
-  offset: {x: -3.4, y: 5.6, z: 0}
+  offset: {x: -0.8, y: 6.1, z: 0}
+  streamSprite: {fileID: -7625886458666803610, guid: f4ee4235bea619f42ba425931999ec72, type: 3}
+  dripSprite: {fileID: 8610922148356791996, guid: a0c47107609e5b643bf72e64b451ab1b, type: 3}

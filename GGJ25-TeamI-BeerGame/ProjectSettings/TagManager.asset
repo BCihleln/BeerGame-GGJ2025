@@ -12,7 +12,7 @@ TagManager:
   - Water
   - UI
   - 
-  - 
+  - Mask1
   - 
   - 
   - 
@@ -47,8 +47,13 @@ TagManager:
   - name: Stream
     uniqueID: 2914098487
     locked: 0
+  - name: Bubble
+    uniqueID: 1930030243
+    locked: 0
   - name: Item
     uniqueID: 1812775667
     locked: 0
   m_RenderingLayers:
   - Default
+  - Mask1
+  - Mask2

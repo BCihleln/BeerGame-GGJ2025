@@ -3,6 +3,8 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Runtime.CompilerServices;
+using System.Collections;
 
 public class CupHandler : MonoBehaviour
 {
@@ -17,13 +19,18 @@ public class CupHandler : MonoBehaviour
 
     public Transform fluid;
     public Transform bubble;
-    private float maxFluidHeight = 5f;
+    private float maxFluidHeight;
     public Sprite drip;
     public Sprite stream;
+    private float fluidSpeed = 0f;
+    private float bubbleSpeed = 0f;
     public SpriteRenderer streamRenderer;
     private float streamThreshold = 30f;
 
     private Bottles chosenBottle;
+
+    public SpriteRenderer dotLineRenderer;
+    public Cups chosenCup;
 
     // private float bubbleDecayRate = 0.01f;
 
@@ -33,9 +40,9 @@ public class CupHandler : MonoBehaviour
 
     private void Update() {
         List<float> getSpeed = GetPouringSpeed(canTransform.eulerAngles.z);
-        float fluidSpeed = getSpeed[0];
-        float bubbleSpeed = getSpeed[1];
-        Debug.Log((fluidSpeed+bubbleSpeed));
+        fluidSpeed = getSpeed[0];
+        bubbleSpeed = getSpeed[1];
+        //Debug.Log((fluidSpeed+bubbleSpeed));
         if((fluidSpeed+bubbleSpeed) > streamThreshold){
             streamRenderer.sprite = stream;
         }
@@ -50,6 +57,7 @@ public class CupHandler : MonoBehaviour
             curBubble += bubbleSpeed;
             AdjustScale();
         }
+        Debug.Log((curFluid+curBubble)/maxVolume);
         // DecayBubbles();
     }
 
@@ -96,13 +104,104 @@ public class CupHandler : MonoBehaviour
         if((curBubble+curFluid)/maxVolume < 0.8f) return -1f;
         return curBubble/(curBubble+curFluid);
     }
-
+    public float GetSkillPercentage(){
+        return curBubble/(curBubble+curFluid);
+    }
+    public bool GetPouringStatus(){
+        return fluidSpeed+bubbleSpeed > streamThreshold;
+    }
     public void Restart(){
         curBubble = 0f;
         curFluid = 0f;
         chosenBottle = canTransform.gameObject.GetComponent<BeerHandler>().chosenBottle;
         streamRenderer.transform.localPosition = chosenBottle.offset;
         pourPoint.localPosition = chosenBottle.offset;
+        drip = chosenBottle.dripSprite;
+        stream = chosenBottle.streamSprite;
+
+        cupEdgeL.transform.localPosition = chosenCup.offsetL;
+        cupEdgeR.transform.localPosition = chosenCup.offsetR;
+        maxFluidHeight = chosenCup.maxHeight;
+        bubble.localPosition = new Vector3(0, chosenCup.bubbleHeight, 0);
+        fluid.localPosition = new Vector3(0, chosenCup.fluidHeight, 0);
+        gameObject.GetComponent<SpriteRenderer>().sprite = chosenCup.cupSprite;
+        bubble.gameObject.GetComponent<SpriteRenderer>().sprite = chosenCup.foamSprite;
+        fluid.gameObject.GetComponent<SpriteRenderer>().sprite = chosenCup.fluidSprite[chosenBottle.fluidID];
+        maxVolume = chosenCup.maxVolume;
+        dotLineRenderer.sprite = chosenCup.fillSprite;
+        dotLineRenderer.gameObject.transform.localPosition = new Vector3 (0, chosenCup.fillLine, 0);
         AdjustScale();
     }
+    private void ChangeCupPosition(float moveSpeed, float durationTime)
+    {
+        StartCoroutine(ChangeCupPositionCoroutine(moveSpeed, durationTime));
+    }
+
+    private IEnumerator ChangeCupPositionCoroutine(float moveSpeed, float durationTime)
+    {
+        float elapsedTime = 0f;
+        Vector3 originalPosition = transform.position;
+        Vector3 targetPosition = originalPosition + Vector3.right * moveSpeed;
+        bool movingRight = true;
+
+        while (elapsedTime < durationTime)
+        {
+            if (movingRight)
+            {
+                transform.position += Vector3.right * moveSpeed * Time.deltaTime;
+            }
+            else
+            {
+                transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+            }
+
+            if (elapsedTime % 2f < Time.deltaTime)
+            {
+                movingRight = !movingRight;
+            }
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = originalPosition;
+    }
+
+    public void MoveCupSkill(float MoveSpeed){
+        // Move the cup to the right for 1 second using ChangeCupPosition
+        ChangeCupPosition(MoveSpeed, 4f);
+        Debug.Log("Cup moved");
+    }
+
+    public class CupData
+    {
+        public float curBubble;
+        public float curFluid;
+        public float fluidSpeed;
+        public float bubbleSpeed;
+        public Bottles chosenBottle;
+    }
+
+    public CupData GetData()
+    {
+        return new CupData
+        {
+            curBubble = this.curBubble,
+            curFluid = this.curFluid,
+            fluidSpeed = this.fluidSpeed,
+            bubbleSpeed = this.bubbleSpeed,
+            chosenBottle = this.chosenBottle
+        };
+    }
+
+    public void SetData(CupData data)
+    {
+        this.curBubble = data.curBubble;
+        this.curFluid = data.curFluid;
+        this.fluidSpeed = data.fluidSpeed;
+        this.bubbleSpeed = data.bubbleSpeed;
+        this.chosenBottle = data.chosenBottle;
+        AdjustScale();
+    }
+    
 }
