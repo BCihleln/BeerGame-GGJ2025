@@ -110,11 +110,14 @@ public class CupHandler : MonoBehaviour
     public bool GetPouringStatus(){
         return fluidSpeed+bubbleSpeed > streamThreshold;
     }
+
     public void Restart(){
         curBubble = 0f;
         curFluid = 0f;
         SetSprites();
+        AdjustScale();
     }
+
     private void SetSprites(){
         chosenBottle = canTransform.gameObject.GetComponent<BeerHandler>().chosenBottle;
         streamRenderer.transform.localPosition = chosenBottle.offset;
@@ -133,8 +136,8 @@ public class CupHandler : MonoBehaviour
         maxVolume = chosenCup.maxVolume;
         dotLineRenderer.sprite = chosenCup.fillSprite;
         dotLineRenderer.gameObject.transform.localPosition = new Vector3 (0, chosenCup.fillLine, 0);
-        AdjustScale();
     }
+
     private void ChangeCupPosition(float moveSpeed, float durationTime)
     {
         StartCoroutine(ChangeCupPositionCoroutine(moveSpeed, durationTime));
@@ -183,8 +186,6 @@ public class CupHandler : MonoBehaviour
         public float fluidSpeed;
         public float bubbleSpeed;
         public Bottles chosenBottle;
-
-        public Cups chosenCup;
     }
 
     public CupData GetData()
@@ -195,8 +196,7 @@ public class CupHandler : MonoBehaviour
             curFluid = this.curFluid,
             fluidSpeed = this.fluidSpeed,
             bubbleSpeed = this.bubbleSpeed,
-            chosenBottle = this.chosenBottle,
-            chosenCup = this.chosenCup
+            chosenBottle = this.chosenBottle
         };
     }
 
@@ -207,8 +207,6 @@ public class CupHandler : MonoBehaviour
         this.fluidSpeed = data.fluidSpeed;
         this.bubbleSpeed = data.bubbleSpeed;
         this.chosenBottle = data.chosenBottle;
-        this.chosenCup = data.chosenCup;
-        this.SetSprites();
         AdjustScale();
     }
     
