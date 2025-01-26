@@ -517,14 +517,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canTransform: {fileID: 0}
+  canTransform2: {fileID: 0}
   cupEdgeL: {fileID: 8194094859566981463}
   cupEdgeR: {fileID: 826593572839714008}
   pourPoint: {fileID: 0}
+  pourPoint2: {fileID: 0}
   fluid: {fileID: 6008478478691601487}
   bubble: {fileID: 2253399450856153842}
   drip: {fileID: -8489766732707969921, guid: 3598a11de317f844db16771a6613cbc6, type: 3}
   stream: {fileID: -7265484682217735617, guid: e175c2757c147ee4ca18d8da81ed14da, type: 3}
   streamRenderer: {fileID: 0}
+  chosenBottle: {fileID: 0}
   dotLineRenderer: {fileID: 475617387105500566}
   chosenCup: {fileID: 11400000, guid: 7b8f7a8e9314c6c46ab958588628dd81, type: 2}
   spill: {fileID: 6390134086421842771}
