@@ -31,6 +31,8 @@ public class CupHandler : MonoBehaviour
 
     public SpriteRenderer dotLineRenderer;
     public Cups chosenCup;
+    public GameObject spill;
+    [SerializeField] private bool spilled = false;
 
     // private float bubbleDecayRate = 0.01f;
 
@@ -57,7 +59,7 @@ public class CupHandler : MonoBehaviour
             curBubble += bubbleSpeed;
             AdjustScale();
         }
-        Debug.Log((curFluid+curBubble)/maxVolume);
+        // Debug.Log((curFluid+curBubble)/maxVolume);
         // DecayBubbles();
     }
 
@@ -72,6 +74,7 @@ public class CupHandler : MonoBehaviour
     private List<float> GetPouringSpeed(float tiltAngle)
     {
         List<float> returnVal = new List<float> { 0f, 0f };
+        if(spilled) return returnVal;
         tiltAngle-=90f;
         tiltAngle = math.max(tiltAngle, 0f);
         returnVal[0] = tiltAngle * chosenBottle.speedFactor * chosenBottle.beerPercentage[0];
@@ -111,7 +114,17 @@ public class CupHandler : MonoBehaviour
         return fluidSpeed+bubbleSpeed > streamThreshold;
     }
 
+    public void DeactivateSpill(){
+        spilled = false;
+        spill.SetActive(false);
+    }
+    public void ActivateSpill(){
+        spilled = true;
+        spill.SetActive(true);
+    }
+
     public void Restart(){
+        DeactivateSpill();
         curBubble = 0f;
         curFluid = 0f;
         SetSprites();
@@ -136,6 +149,8 @@ public class CupHandler : MonoBehaviour
         maxVolume = chosenCup.maxVolume;
         dotLineRenderer.sprite = chosenCup.fillSprite;
         dotLineRenderer.gameObject.transform.localPosition = new Vector3 (0, chosenCup.fillLine, 0);
+        spill.GetComponent<SpriteRenderer>().sprite = chosenCup.spillSprite;
+        spill.transform.localPosition = new Vector3(0, chosenCup.spillHeight, 0);
     }
 
     private void ChangeCupPosition(float moveSpeed, float durationTime)
@@ -176,7 +191,7 @@ public class CupHandler : MonoBehaviour
     public void MoveCupSkill(float MoveSpeed){
         // Move the cup to the right for 1 second using ChangeCupPosition
         ChangeCupPosition(MoveSpeed, 4f);
-        Debug.Log("Cup moved");
+        // Debug.Log("Cup moved");
     }
 
     public class CupData
