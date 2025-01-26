@@ -8,6 +8,7 @@ public class BattleUIControl : MonoBehaviour
     [SerializeField] BattleUISO battleUISO;
     [SerializeField] SkillSO skillSOData;
     [SerializeField] GameRoundManager gameRoundManager;
+    [SerializeField] GameManager gameManager;
     [SerializeField] GameObject P1Can;
     [SerializeField] GameObject P1Cup;
     [SerializeField] GameObject P2Can;
@@ -22,6 +23,11 @@ public class BattleUIControl : MonoBehaviour
     private int _currentP1Select = 0;
     private int _currentP2Select = 0;
     private SkillSystem skillSystem;
+    private float _p1CountTime = 0f;
+    private bool _p1StartCount = false;
+    private float _p2CountTime = 0f;
+    private bool _p2StartCount = false;
+
 
     VisualElement rootVisualElement;
 
@@ -113,7 +119,7 @@ public class BattleUIControl : MonoBehaviour
 
                 player1SelectPic.style.backgroundImage = new StyleBackground(battleUISO.cupPicture[0]);
             }
-            else
+            else if (phaseID1 == 3)
             {
                 player1SelectPic.visible = false;
                 player1LeftPic.visible = false;
@@ -122,6 +128,11 @@ public class BattleUIControl : MonoBehaviour
                 P1Can.SetActive(true);
                 P1Cup.SetActive(true);
             }
+            else
+            {
+                P1Cup.SetActive(false);
+            }
+
 
         }
         else
@@ -204,6 +215,31 @@ public class BattleUIControl : MonoBehaviour
         else player2BubbleRatio.visible = false;
     }
 
+    public void StartCount(int playerID)
+    {
+        if (playerID == 1)
+        {
+            player1TimeLeft.visible = true;
+            _p1StartCount = true;
+            _p1CountTime = Time.time;
+        }
+        else
+        {
+            player2TimeLeft.visible = true;
+            _p2StartCount = true;
+            _p2CountTime = Time.time;
+        }
+    }
+
+    public void DisableTimeCountUI()
+    {
+        player1TimeLeft.visible = false;
+        _p1StartCount = false;
+        player2TimeLeft.visible = false;
+        _p2StartCount = false;
+    }
+
+
     private void Start()
     {
 
@@ -262,7 +298,8 @@ public class BattleUIControl : MonoBehaviour
             }
             if (Input.GetKeyDown(Player1Submit))
             {
-                //call select function
+                if (gameRoundManager.GetPlayer1Phase() == 1) gameRoundManager.SelectBeer(1, _currentP1Select);
+                else gameRoundManager.SelectCup(1, _currentP1Select);
                 gameRoundManager.NextPhase(1);
             }
         }
@@ -284,10 +321,41 @@ public class BattleUIControl : MonoBehaviour
             }
             if (Input.GetKeyDown(Player2Submit))
             {
-                //call select function
+                if (gameRoundManager.GetPlayer2Phase() == 1) gameRoundManager.SelectBeer(2, _currentP1Select);
+                else gameRoundManager.SelectCup(2, _currentP1Select);
                 gameRoundManager.NextPhase(2);
             }
         }
+
+        if (_p1StartCount)
+        {
+            float tempTime1 = 3-Time.time + _p1CountTime; 
+
+            if (tempTime1 < 0 ) tempTime1 = 0;
+            player1TimeLeft.text = tempTime1.ToString("0.0");
+
+            if (tempTime1 == 0)
+            {
+                _p1StartCount = false;
+                gameManager.JudgeRoundResult();
+            }
+
+        }
+       
+        if (_p2StartCount)
+        {
+            float tempTime2 = 3 - Time.time + _p2CountTime;
+
+            if (tempTime2 < 0) tempTime2 = 0;
+            player2TimeLeft.text = tempTime2.ToString("0.0");
+
+            if (tempTime2 == 0)
+            {
+                _p2StartCount = false;
+                gameManager.JudgeRoundResult();
+            }
+        }
+
 
     }
 

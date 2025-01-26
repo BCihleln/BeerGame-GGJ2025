@@ -12,17 +12,29 @@ public class RequestGenerator : MonoBehaviour
     public List<Sprite> customerList = new List<Sprite>();
     public TMP_Text testingText;
 
+    private int _currentBeer = 0;
+    private int _currentCup = 0;
+    private float _currentPercent = 0;
+
+    public int GetCurrentBeer()
+    {
+        return _currentBeer;
+    }
+
+    public int GetCurrentCup()
+    {
+        return _currentCup;
+    }
+    public float GetCurrentPercent()
+    {
+        return _currentPercent;
+    }
+
     private void Start() {
         requestCup.GetComponent<SpriteRenderer>().sprite = null;
     }
-    
-    private void Update() {
-        if(Input.GetKeyDown(KeyCode.Space)){
-            testingText.text = NewRequest().ToString();
-        }
-    }
 
-    public float NewRequest()
+    public void NewRequest()
     {
         customer.GetComponent<SpriteRenderer>().sprite = customerList[Random.Range(0,2)];
         int drinkPick = Random.Range(0, 3);
@@ -43,6 +55,8 @@ public class RequestGenerator : MonoBehaviour
                 requestCup.GetComponent<SpriteRenderer>().sprite = spriteList2[cupPick];
                 break;
         }
-        return secondPick;
+        _currentBeer = drinkPick;
+        _currentCup = cupPick;
+        _currentPercent = secondPick;
     }
 }

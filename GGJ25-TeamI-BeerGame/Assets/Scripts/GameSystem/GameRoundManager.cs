@@ -1,14 +1,45 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameRoundManager : MonoBehaviour
 {
     [SerializeField] BattleUIControl BattleUI;
+    [SerializeField] RequestGenerator requestGenerator;
+    [SerializeField] UnityEvent OnGameEnd;
 
     private int _currentCustomerLeft = 7;
     private int _player1Point = 0;
     private int _player1Phase = 1;
     private int _player2Point = 0;
     private int _player2Phase = 1;
+    private int _p1SelectBeer = 0;
+    private int _p2SelectBeer = 0;
+    private int _p1SelectCup = 0;
+    private int _p2SelectCup = 0;
+
+    public void SelectBeer(int playerID, int beerID)
+    {
+        if (playerID == 1) _p1SelectBeer = beerID;
+        else _p2SelectBeer = beerID;
+    }
+    public void SelectCup(int playerID, int cupID)
+    {
+        if (playerID == 1) _p1SelectCup = cupID;
+        else _p2SelectCup = cupID;
+    }
+
+    public int GetSelectBeer(int playerID)
+    {
+        if (playerID == 1) return _p1SelectBeer;
+        else return _p2SelectBeer;
+    }
+
+    public int GetSelectCup(int playerID)
+    {
+        if (playerID == 1) return _p1SelectCup;
+        else return _p2SelectCup;
+    }
+
 
     public int GetCurrentCustomerLeft() {  return _currentCustomerLeft; }
     public int GetPlayer1Phase() {  return _player1Phase; }
@@ -28,11 +59,11 @@ public class GameRoundManager : MonoBehaviour
     {
         if (playerID == 1) 
         {
-            if (_player1Phase != 3) _player1Phase++;
+            if (_player1Phase != 4) _player1Phase++;
         }
         else 
         {
-            if (_player2Phase != 3) _player2Phase++;
+            if (_player2Phase != 4) _player2Phase++;
         }
         BattleUI.PhaseUIChange(playerID);
     }
@@ -55,11 +86,23 @@ public class GameRoundManager : MonoBehaviour
 
             if (_player2Point == 4) ; //call player2 win
         }
+
+        NextRound();
+
     }
 
     public void NextRound()
     {
         _currentCustomerLeft--;
+
+        _player1Point = 0;
+        _player1Phase = 1;
+        _player2Point = 0;
+        _player2Phase = 1;
+        _p1SelectBeer = 0;
+        _p2SelectBeer = 0;
+        _p1SelectCup = 0;
+        _p2SelectCup = 0;
 
         BattleUI.RoundInitial();
 
@@ -68,7 +111,11 @@ public class GameRoundManager : MonoBehaviour
             //game end
         }
 
+    }
 
+    private void Start()
+    {
+        requestGenerator.NewRequest();
     }
 
 

@@ -31,9 +31,9 @@ public class BeerHandler : MonoBehaviour
         }
         else
         {
-            LeftKey = KeyCode.LeftArrow;
-            RightKey = KeyCode.RightArrow;
-            PourKey = KeyCode.UpArrow;
+            LeftKey = KeyCode.J;
+            RightKey = KeyCode.L;
+            PourKey = KeyCode.I;
         }
     }
 

@@ -54,6 +54,8 @@ public class SkillSystem : MonoBehaviour
 
                             break;
                     }
+
+                    player1Skills[i] = -1;
                 }
             }
         }
