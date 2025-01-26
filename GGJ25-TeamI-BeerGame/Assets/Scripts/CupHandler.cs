@@ -108,7 +108,9 @@ public class CupHandler : MonoBehaviour
         return curBubble/(curBubble+curFluid);
     }
     public float GetSkillPercentage(){
-        return curBubble/(curBubble+curFluid);
+
+        if (curBubble + curFluid == 0) return 0;
+        else return curBubble/(curBubble+curFluid);
     }
     public bool GetPouringStatus(){
         return fluidSpeed+bubbleSpeed > streamThreshold;

@@ -13,29 +13,9 @@ public class ShakingSkill : MonoBehaviour
     {
         Application.runInBackground = true;
     }
-
-    private void Update()
-    {
-        CheckSkillActivationP1();
-        CheckSkillActivationP2();
-    }
-    private void CheckSkillActivationP1()
-    {
-        if (Input.GetKeyDown(P1SkillBtn))
-        {
-            MoveCup(cupP2, moveSpeed);
-            Debug.Log("P1 used skill");
-        }
-    }
-    private void CheckSkillActivationP2()
-    {
-        if (Input.GetKeyDown(P2SkillBtn))
-        {
-            MoveCup(cupP1, moveSpeed);
-            Debug.Log("P2 used skill");
-        }
-    }
-    private void MoveCup(CupHandler cup, float speed){
-        cup.MoveCupSkill(speed);
+    public void MoveCup(int cupID){
+        
+        if (cupID == 1) cupP2.MoveCupSkill(moveSpeed);
+        else cupP1.MoveCupSkill(moveSpeed);
     }
 }

@@ -1,53 +1,68 @@
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class PercentageSkill:MonoBehaviour
 {
-    public TMP_Text P1text;
-    public TMP_Text P2text;
-    public CupHandler cupP1;
-    public CupHandler cupP2;
+    [SerializeField] BattleUIControl battleUI;
+    [SerializeField] CupHandler cupP1;
+    [SerializeField] CupHandler cupP2;
+    [SerializeField] float skillTime = 3f;
+
     private bool P1ShowPercentageSwitch = false;
     private bool P2ShowPercentageSwitch = false;
+    private float P1StartTime = 0f;
+    private float P2StartTime = 0f;
 
-    private void Start()
+    public void P1ShowPercentage()
     {
-        P1text = GameObject.Find("P1Text").GetComponent<TMP_Text>();
-        P2text = GameObject.Find("P2Text").GetComponent<TMP_Text>();
-        P1text.text = "";
-        P2text.text = "";
-        P1text.gameObject.SetActive(false);
-        P2text.gameObject.SetActive(false);
+        P1ShowPercentageSwitch = true; 
+
+        string text1 = "0.00%";
+
+        if (cupP1.GetSkillPercentage() * 100 != 0) text1 = (cupP1.GetSkillPercentage() * 100).ToString("0.00") + "%";
+
+        battleUI.EnableBubbleRatio(1, text1);
+
+        P1StartTime = Time.time;
+
     }
+    public void P2ShowPercentage()
+    { 
+
+        P2ShowPercentageSwitch = true;
+
+        string text1 = "0.00%";
+
+        if (cupP2.GetSkillPercentage() * 100 != 0) text1 = (cupP2.GetSkillPercentage() * 100).ToString("0.00") + "%";
+
+        battleUI.EnableBubbleRatio(2, text1);
+
+        P2StartTime = Time.time;
+
+    }
+
     private void Update()
     {
-        CheckSkillActivationP1();
-        CheckSkillActivationP2();
-        if(P1ShowPercentageSwitch){
-            P1ShowPercentage();
+        if (P1ShowPercentageSwitch)
+        {
+            if (Time.time - P1StartTime >= skillTime)
+            {
+                battleUI.DisableBubbleRatio(1);
+                P1ShowPercentageSwitch = false;
+            }
         }
-        if(P2ShowPercentageSwitch){
-            P2ShowPercentage();
-        }
-    }
-    private void P1ShowPercentage(){
-        P1text.text = "P1: " + (cupP1.GetSkillPercentage()*100).ToString() + "%";
-    }
-    private void P2ShowPercentage(){
-        P2text.text = "P2: " + (cupP2.GetSkillPercentage()*100).ToString() + "%";
-    }
-    private void CheckSkillActivationP1(){
-        if (Input.GetKeyDown(KeyCode.X)){
-            // Activate skill
-            P1text.gameObject.SetActive(true);
-            P1ShowPercentageSwitch = true;
+        if (P2ShowPercentageSwitch)
+        {
+            if (Time.time - P2StartTime >= skillTime)
+            {
+                battleUI.DisableBubbleRatio(2);
+                P2ShowPercentageSwitch = false;
+            }
         }
     }
-    private void CheckSkillActivationP2(){
-        if (Input.GetKeyDown(KeyCode.RightShift)){
-            // Activate skill
-            P2text.gameObject.SetActive(true);
-            P2ShowPercentageSwitch = true;
-        }
-    }
+
+
+
+
 }

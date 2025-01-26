@@ -14,22 +14,11 @@ public class SwapCupSkill : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //swap the cups
-        if (Input.GetKeyDown(P1SkillBtn) || Input.GetKeyDown(P2SkillBtn))
-        {
-            SwapCups(cupP1, cupP2);
-            Debug.Log("Cups swapped");
-        }
-    }
-
-    void SwapCups(CupHandler cup1, CupHandler cup2)
+    public void SwapCups()
     {
         // Swap all relevant data between cup1 and cup2
-        var tempData = cup1.GetData();
-        cup1.SetData(cup2.GetData());
-        cup2.SetData(tempData);
+        var tempData = cupP1.GetData();
+        cupP1.SetData(cupP2.GetData());
+        cupP2.SetData(tempData);
     }
 }

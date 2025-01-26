@@ -52,6 +52,11 @@ public class BattleUIControl : MonoBehaviour
         player1BubbleRatio.visible = false;
         player2BubbleRatio.visible = false;
 
+        P1Can.SetActive(false);
+        P1Cup.SetActive(false);
+        P2Can.SetActive(false);
+        P2Cup.SetActive(false);
+
         for (int i = 1; i < 8; i++)
         {
             player1PointPicture[i].visible = false;
@@ -179,9 +184,29 @@ public class BattleUIControl : MonoBehaviour
         }
     }
 
+    public void EnableBubbleRatio(int playerID, string percentText)
+    {
+        if (playerID == 1)
+        {
+            player1BubbleRatio.visible = true;
+            player1BubbleRatio.text = percentText;
+        }
+        else
+        {
+            player2BubbleRatio.visible = true;
+            player2BubbleRatio.text = percentText;
+        }
+    }
+
+    public void DisableBubbleRatio(int playerID)
+    {
+        if (playerID == 1) player1BubbleRatio.visible = false;
+        else player2BubbleRatio.visible = false;
+    }
 
     private void Start()
     {
+
         skillSystem = GameObject.Find("SkillManager").GetComponent<SkillSystem>();
 
         rootVisualElement = GetComponent<UIDocument>().rootVisualElement;

@@ -14,7 +14,7 @@
         </ui:VisualElement>
         <ui:VisualElement name="PlayerPanel" style="flex-grow: 1; height: 75%; flex-direction: row;">
             <ui:VisualElement name="Player1Panel" style="flex-grow: 1; width: 50%; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-width: 0;">
-                <ui:Label text="20%" name="P1BubbleRatio" enabled="true" style="position: absolute; height: 86px; top: 300px; width: 178px; left: 0; font-size: 50px; -unity-font-style: bold; align-self: flex-start; -unity-text-align: middle-center; color: rgb(255, 0, 0);" />
+                <ui:Label text="20%" name="P1BubbleRatio" enabled="true" style="position: absolute; height: 68px; top: 300px; width: 141px; left: 90px; font-size: 50px; -unity-font-style: bold; align-self: flex-start; -unity-text-align: middle-center; color: rgb(255, 0, 0);" />
                 <ui:VisualElement name="SelectPanel" style="flex-grow: 1; height: 70%; flex-direction: row;">
                     <ui:VisualElement name="P1PointPanel" style="flex-grow: 1; width: 5%; visibility: visible; align-self: center; background-image: none; -unity-text-align: upper-left; height: 500px; justify-content: flex-start; top: 30px;">
                         <ui:VisualElement name="P1Point1" style="flex-grow: initial; height: 50px; width: 50px;" />
@@ -58,7 +58,7 @@
             </ui:VisualElement>
             <ui:Label text="3" name="P1TimeCount" style="position: absolute; height: 185px; top: 3px; width: 227px; left: 0; font-size: 200px; -unity-font-style: bold; align-self: flex-start; -unity-text-align: middle-center; color: rgb(255, 0, 0);" />
             <ui:VisualElement name="Player2Panel" style="flex-grow: 1; width: 50%; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-width: 0;">
-                <ui:Label text="20%" name="P2BubbleRatio" style="position: absolute; height: 86px; top: 300px; width: 178px; left: 0; font-size: 50px; -unity-font-style: bold; align-self: flex-start; -unity-text-align: middle-center; color: rgb(255, 0, 0);" />
+                <ui:Label text="20%" name="P2BubbleRatio" style="position: absolute; height: 86px; top: 300px; width: 178px; left: 90px; font-size: 50px; -unity-font-style: bold; align-self: flex-start; -unity-text-align: middle-center; color: rgb(255, 0, 0);" />
                 <ui:VisualElement name="SelectPanel" style="flex-grow: 1; height: 70%; flex-direction: row;">
                     <ui:VisualElement style="flex-grow: 1;" />
                     <ui:VisualElement name="P2LeftSelect" style="flex-grow: 1; width: 10%; visibility: visible; align-self: center; background-image: url(&quot;project://database/Assets/Sprites/flat-dark/flatDark23.png?fileID=-2470510515864896749&amp;guid=ad111c291749c4f40adb92bc4b469e86&amp;type=3#flatDark23_0&quot;); -unity-text-align: upper-left; height: 30%; -unity-background-scale-mode: scale-to-fit;" />
