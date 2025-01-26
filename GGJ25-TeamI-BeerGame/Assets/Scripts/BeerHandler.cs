@@ -8,7 +8,7 @@ public class BeerHandler : MonoBehaviour
     public Transform stream;
 
     private float pourUpperLimit = 80f;
-    private float pourLowerLimit = 180f;
+    private float pourLowerLimit = 160f;
 
     private float forwardSpeed = 1.6f;
     private float recoverSpeed = -0.8f;

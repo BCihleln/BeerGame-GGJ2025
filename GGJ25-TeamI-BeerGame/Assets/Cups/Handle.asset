@@ -12,7 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aa023cad06ede14dae9ddeb1f603e73, type: 3}
   m_Name: Handle
   m_EditorClassIdentifier: 
-  offsetL: {x: 0, y: 0, z: 0}
-  offsetR: {x: 0, y: 0, z: 0}
-  fluidWidth: 0
-  cupSprite: {fileID: 0}
+  offsetL: {x: -1.9, y: 4.5, z: 0}
+  offsetR: {x: 1.9, y: 4.5, z: 0}
+  cupSprite: {fileID: -4433469641421908972, guid: 41b07a9191bdfdb45b08a8c9f525c61a, type: 3}
+  foamSprite: {fileID: 4883342822968363434, guid: 712e22e848a399947adff13ea5a5cb90, type: 3}
+  fluidSprite:
+  - {fileID: 4314054962540600650, guid: f023740e56176c2499751a4ace810a08, type: 3}
+  - {fileID: 4444805197730084874, guid: 4d74b11071d6d2f47803ec7e049aa80c, type: 3}
+  - {fileID: 8773531456999010656, guid: 09a55f8b8c0e44e41b30caf6eb79dd72, type: 3}
+  maxHeight: 1
+  fluidHeight: -1.36
+  bubbleHeight: 5.03
+  maxVolume: 200000
+  fillLine: 2.03
+  fillSprite: {fileID: 21300000, guid: 7d4bc788ac9d8d74883a6175be6a765d, type: 3}

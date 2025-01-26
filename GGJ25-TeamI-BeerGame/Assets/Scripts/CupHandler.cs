@@ -11,19 +11,22 @@ public class CupHandler : MonoBehaviour
     public Transform cupEdgeR;
     public Transform pourPoint;
 
-    private float maxVolume = 80000f;
+    private float maxVolume = 200000f;
     private float curBubble = 0f;
     private float curFluid = 0f;
 
     public Transform fluid;
     public Transform bubble;
-    private float maxFluidHeight = 0.85f;
+    private float maxFluidHeight;
     public Sprite drip;
     public Sprite stream;
     public SpriteRenderer streamRenderer;
     private float streamThreshold = 30f;
 
     private Bottles chosenBottle;
+
+    public SpriteRenderer dotLineRenderer;
+    public Cups chosenCup;
 
     // private float bubbleDecayRate = 0.01f;
 
@@ -35,7 +38,7 @@ public class CupHandler : MonoBehaviour
         List<float> getSpeed = GetPouringSpeed(canTransform.eulerAngles.z);
         float fluidSpeed = getSpeed[0];
         float bubbleSpeed = getSpeed[1];
-        Debug.Log((fluidSpeed+bubbleSpeed));
+        // Debug.Log((fluidSpeed+bubbleSpeed));
         if((fluidSpeed+bubbleSpeed) > streamThreshold){
             streamRenderer.sprite = stream;
         }
@@ -50,6 +53,7 @@ public class CupHandler : MonoBehaviour
             curBubble += bubbleSpeed;
             AdjustScale();
         }
+        Debug.Log((curFluid+curBubble)/maxVolume);
         // DecayBubbles();
     }
 
@@ -103,6 +107,20 @@ public class CupHandler : MonoBehaviour
         chosenBottle = canTransform.gameObject.GetComponent<BeerHandler>().chosenBottle;
         streamRenderer.transform.localPosition = chosenBottle.offset;
         pourPoint.localPosition = chosenBottle.offset;
+        drip = chosenBottle.dripSprite;
+        stream = chosenBottle.streamSprite;
+
+        cupEdgeL.transform.localPosition = chosenCup.offsetL;
+        cupEdgeR.transform.localPosition = chosenCup.offsetR;
+        maxFluidHeight = chosenCup.maxHeight;
+        bubble.localPosition = new Vector3(0, chosenCup.bubbleHeight, 0);
+        fluid.localPosition = new Vector3(0, chosenCup.fluidHeight, 0);
+        gameObject.GetComponent<SpriteRenderer>().sprite = chosenCup.cupSprite;
+        bubble.gameObject.GetComponent<SpriteRenderer>().sprite = chosenCup.foamSprite;
+        fluid.gameObject.GetComponent<SpriteRenderer>().sprite = chosenCup.fluidSprite[chosenBottle.fluidID];
+        maxVolume = chosenCup.maxVolume;
+        dotLineRenderer.sprite = chosenCup.fillSprite;
+        dotLineRenderer.gameObject.transform.localPosition = new Vector3 (0, chosenCup.fillLine, 0);
         AdjustScale();
     }
 }
