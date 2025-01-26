@@ -1,12 +1,17 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEngine.Rendering.DebugUI.MessageBox;
 
 public class BattleUIControl : MonoBehaviour
 {
     [SerializeField] BattleUISO battleUISO;
     [SerializeField] SkillSO skillSOData;
     [SerializeField] GameRoundManager gameRoundManager;
+    [SerializeField] GameObject P1Can;
+    [SerializeField] GameObject P1Cup;
+    [SerializeField] GameObject P2Can;
+    [SerializeField] GameObject P2Cup;
     [SerializeField] string Player1Left = "a";
     [SerializeField] string Player1Right = "d";
     [SerializeField] string Player1Submit = "f";
@@ -21,8 +26,6 @@ public class BattleUIControl : MonoBehaviour
     VisualElement rootVisualElement;
 
     Label customerLeft;
-    Label player1Phase;
-    Label player2Phase;
     Label player1BubbleRatio;
     Label player2BubbleRatio;
     Label player1TimeLeft;
@@ -61,7 +64,9 @@ public class BattleUIControl : MonoBehaviour
         for (int i = 1; i < 4; i++)
         {
             player1SkillName[i].text = skillSOData.skillNames[skillSystem.GetSkillName(1, i)];
+            player1SkillPic[i].style.backgroundImage = new StyleBackground(skillSOData.skillPictures[skillSystem.GetSkillName(1, i)]);
             player2SkillName[i].text = skillSOData.skillNames[skillSystem.GetSkillName(2, i)];
+            player2SkillPic[i].style.backgroundImage = new StyleBackground(skillSOData.skillPictures[skillSystem.GetSkillName(2, i)]);
         }
     }
 
@@ -84,7 +89,6 @@ public class BattleUIControl : MonoBehaviour
         {
             int phaseID1 = gameRoundManager.GetPlayer1Phase();
 
-            player1Phase.text = battleUISO.phaseName[phaseID1 - 1];
             _currentP1Select = 0;
 
             if (phaseID1 == 1)
@@ -110,13 +114,14 @@ public class BattleUIControl : MonoBehaviour
                 player1LeftPic.visible = false;
                 player1RightPic.visible = false;
 
+                P1Can.SetActive(true);
+                P1Cup.SetActive(true);
             }
 
         }
         else
         {
             int phaseID2 = gameRoundManager.GetPlayer2Phase();
-            player2Phase.text = battleUISO.phaseName[phaseID2 - 1];
             _currentP2Select = 0;
 
             if (phaseID2 == 1)
@@ -142,6 +147,8 @@ public class BattleUIControl : MonoBehaviour
                 player2LeftPic.visible = false;
                 player2RightPic.visible = false;
 
+                P2Can.SetActive(true);
+                P2Cup.SetActive(true);
             }
         }
     }
@@ -170,8 +177,8 @@ public class BattleUIControl : MonoBehaviour
             }
 
         }
-
     }
+
 
     private void Start()
     {
@@ -180,8 +187,6 @@ public class BattleUIControl : MonoBehaviour
         rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
 
         customerLeft = rootVisualElement.Q<Label>("CustomerLeft");
-        player1Phase = rootVisualElement.Q<Label>("P1Phase");
-        player2Phase = rootVisualElement.Q<Label>("P2Phase");
         player1BubbleRatio = rootVisualElement.Q<Label>("P1BubbleRatio");
         player2BubbleRatio = rootVisualElement.Q<Label>("P2BubbleRatio");
         player1TimeLeft = rootVisualElement.Q<Label>("P1TimeCount");
@@ -204,7 +209,9 @@ public class BattleUIControl : MonoBehaviour
         for (int i = 1; i < 8; i++)
         {
             player1PointPicture[i] = rootVisualElement.Q<VisualElement>("P1Point" + i.ToString());
+            player1PointPicture[i].visible = false;
             player2PointPicture[i] = rootVisualElement.Q<VisualElement>("P2Point" + i.ToString());
+            player2PointPicture[i].visible = false;
         }
 
         TotalInitialUI();
