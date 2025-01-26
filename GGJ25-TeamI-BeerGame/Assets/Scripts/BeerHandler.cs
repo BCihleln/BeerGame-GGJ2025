@@ -3,6 +3,8 @@ using TMPro;
 
 public class BeerHandler : MonoBehaviour
 {
+    [SerializeField] BattleUISO battleUISO;
+
     public float moveSpeed = 5f;
     public float rotationSpeed = 25f;
     public int playerID;
@@ -20,6 +22,13 @@ public class BeerHandler : MonoBehaviour
     public KeyCode RightKey { get; set; }
     public KeyCode PourKey { get; set; }
 
+
+    public void SelectBeer(int beerID)
+    {
+        chosenBottle = battleUISO.beerObj[beerID];
+        gameObject.GetComponent<SpriteRenderer>().sprite = chosenBottle.bottleSprite;
+    }
+
     private void Start()
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = chosenBottle.bottleSprite;
@@ -36,6 +45,7 @@ public class BeerHandler : MonoBehaviour
             PourKey = KeyCode.I;
         }
     }
+
 
     private void Update()
     {

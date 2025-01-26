@@ -8,4 +8,6 @@ public class BattleUISO : ScriptableObject
     public Sprite[] cupPicture;
     public string[] skillName;
     public Sprite[] skillPicture;
+    public Bottles[] beerObj;
+    public Cups[] cupObj;
 }

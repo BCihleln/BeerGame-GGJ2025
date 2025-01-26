@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class RequestGenerator : MonoBehaviour
 {
+    [SerializeField] Text perText;
     public GameObject requestCup;
     public GameObject customer;
     public List<Sprite> spriteList0 = new List<Sprite>();
@@ -30,9 +33,9 @@ public class RequestGenerator : MonoBehaviour
         return _currentPercent;
     }
 
-    private void Start() {
-        requestCup.GetComponent<SpriteRenderer>().sprite = null;
-    }
+    //private void Start() {
+    //    requestCup.GetComponent<SpriteRenderer>().sprite = null;
+    //}
 
     public void NewRequest()
     {
@@ -55,6 +58,9 @@ public class RequestGenerator : MonoBehaviour
                 requestCup.GetComponent<SpriteRenderer>().sprite = spriteList2[cupPick];
                 break;
         }
+
+        perText.text = (secondPick * 100).ToString("0") + "%";
+
         _currentBeer = drinkPick;
         _currentCup = cupPick;
         _currentPercent = secondPick;

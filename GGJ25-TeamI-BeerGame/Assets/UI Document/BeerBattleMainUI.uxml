@@ -18,8 +18,8 @@
                 <ui:VisualElement name="SelectPanel" style="flex-grow: 1; height: 70%; flex-direction: row;">
                     <ui:VisualElement name="P1PointPanel" style="flex-grow: initial; width: 5%; visibility: visible; align-self: center; background-image: none; -unity-text-align: upper-left; height: 500px; justify-content: flex-start; top: 30px; position: absolute;">
                         <ui:VisualElement name="P1Point1" style="flex-grow: initial; height: 60px; width: 60px; background-image: url(&quot;project://database/Assets/Image/%E6%98%9F%E6%98%9F%EF%BC%BF%E4%BA%AE%E7%9A%84.png?fileID=21300000&amp;guid=65a8d5f1769055447aeab381632ebc83&amp;type=3#星星＿亮的&quot;); align-self: center;" />
-                        <ui:VisualElement name="P1Point2" style="flex-grow: initial; height: 60px; width: 60px; background-image: url(&quot;project://database/Assets/Image/%E6%98%9F%E6%98%9F%EF%BC%BF%E4%BA%AE%E7%9A%84.png?fileID=21300000&amp;guid=65a8d5f1769055447aeab381632ebc83&amp;type=3#星星＿亮的&quot;); align-self: center;" />
-                        <ui:VisualElement name="P1Point3" style="flex-grow: initial; height: 60px; width: 60px; background-image: url(&quot;project://database/Assets/Image/%E6%98%9F%E6%98%9F%EF%BC%BF%E4%BA%AE%E7%9A%84.png?fileID=21300000&amp;guid=65a8d5f1769055447aeab381632ebc83&amp;type=3#星星＿亮的&quot;); align-self: center;" />
+                        <ui:VisualElement name="P1Point2" enabled="true" style="flex-grow: initial; height: 60px; width: 60px; background-image: url(&quot;project://database/Assets/Image/%E6%98%9F%E6%98%9F%EF%BC%BF%E4%BA%AE%E7%9A%84.png?fileID=21300000&amp;guid=65a8d5f1769055447aeab381632ebc83&amp;type=3#星星＿亮的&quot;); align-self: center; visibility: visible;" />
+                        <ui:VisualElement name="P1Point3" style="flex-grow: initial; height: 60px; width: 60px; background-image: url(&quot;project://database/Assets/Image/%E6%98%9F%E6%98%9F%EF%BC%BF%E4%BA%AE%E7%9A%84.png?fileID=21300000&amp;guid=65a8d5f1769055447aeab381632ebc83&amp;type=3#星星＿亮的&quot;); align-self: center; visibility: visible;" />
                         <ui:VisualElement name="P1Point4" style="flex-grow: initial; height: 60px; width: 60px; background-image: url(&quot;project://database/Assets/Image/%E6%98%9F%E6%98%9F%EF%BC%BF%E4%BA%AE%E7%9A%84.png?fileID=21300000&amp;guid=65a8d5f1769055447aeab381632ebc83&amp;type=3#星星＿亮的&quot;); align-self: center;" />
                         <ui:VisualElement name="P1Point5" style="flex-grow: initial; height: 60px; width: 60px; background-image: url(&quot;project://database/Assets/Image/%E6%98%9F%E6%98%9F%EF%BC%BF%E4%BA%AE%E7%9A%84.png?fileID=21300000&amp;guid=65a8d5f1769055447aeab381632ebc83&amp;type=3#星星＿亮的&quot;); align-self: center;" />
                         <ui:VisualElement name="P1Point6" style="flex-grow: initial; height: 60px; width: 60px; background-image: url(&quot;project://database/Assets/Image/%E6%98%9F%E6%98%9F%EF%BC%BF%E4%BA%AE%E7%9A%84.png?fileID=21300000&amp;guid=65a8d5f1769055447aeab381632ebc83&amp;type=3#星星＿亮的&quot;); align-self: center;" />
@@ -55,7 +55,7 @@
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:Label text="3" name="P1TimeCount" style="position: absolute; height: 185px; top: 3px; width: 227px; left: 0; font-size: 200px; -unity-font-style: bold; align-self: flex-start; -unity-text-align: middle-center; color: rgb(255, 0, 0);" />
+            <ui:Label text="3" name="P1TimeCount" style="position: absolute; height: 185px; top: -100px; width: 227px; left: 300px; font-size: 200px; -unity-font-style: bold; align-self: flex-start; -unity-text-align: middle-center; color: rgb(255, 0, 0);" />
             <ui:VisualElement name="Player2Panel" style="flex-grow: 1; width: 50%; border-left-width: 0; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-width: 0;">
                 <ui:Label text="20%" name="P2BubbleRatio" style="position: absolute; height: 86px; top: 300px; width: 178px; left: 90px; font-size: 50px; -unity-font-style: bold; align-self: flex-start; -unity-text-align: middle-center; color: rgb(255, 0, 0);" />
                 <ui:VisualElement name="SelectPanel" style="flex-grow: 1; height: 70%; flex-direction: row;">
@@ -97,7 +97,7 @@
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:Label text="3" name="P2TimeCount" style="position: absolute; height: 180px; top: 3px; width: 225px; left: 0; font-size: 200px; -unity-font-style: bold; align-self: flex-start; -unity-text-align: middle-center; color: rgb(255, 0, 0);" />
+                <ui:Label text="3" name="P2TimeCount" style="position: absolute; height: 180px; top: -100px; width: 225px; left: 400px; font-size: 200px; -unity-font-style: bold; align-self: flex-start; -unity-text-align: middle-center; color: rgb(255, 0, 0);" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

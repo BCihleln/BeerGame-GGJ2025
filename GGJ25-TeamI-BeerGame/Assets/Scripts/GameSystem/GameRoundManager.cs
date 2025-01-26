@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,6 +7,9 @@ public class GameRoundManager : MonoBehaviour
     [SerializeField] BattleUIControl BattleUI;
     [SerializeField] RequestGenerator requestGenerator;
     [SerializeField] UnityEvent OnGameEnd;
+    [SerializeField] GameObject P1RountEnd;
+    [SerializeField] GameObject P2RountEnd;
+    [SerializeField] float RoundWaitTime = 2f;
 
     private int _currentCustomerLeft = 7;
     private int _player1Point = 0;
@@ -75,6 +79,8 @@ public class GameRoundManager : MonoBehaviour
 
             BattleUI.Player1GetPoint(_player1Point);
 
+            P1RountEnd.SetActive(true);
+
             if (_player1Point == 4) ; //call player1 win
 
         }
@@ -84,20 +90,21 @@ public class GameRoundManager : MonoBehaviour
 
             BattleUI.Player2GetPoint(_player2Point);
 
+            P2RountEnd.SetActive(true);
+
             if (_player2Point == 4) ; //call player2 win
         }
 
-        NextRound();
+        StartCoroutine(NextRoundWaitTime());
 
     }
 
     public void NextRound()
     {
+        requestGenerator.NewRequest();
         _currentCustomerLeft--;
 
-        _player1Point = 0;
         _player1Phase = 1;
-        _player2Point = 0;
         _player2Phase = 1;
         _p1SelectBeer = 0;
         _p2SelectBeer = 0;
@@ -105,6 +112,7 @@ public class GameRoundManager : MonoBehaviour
         _p2SelectCup = 0;
 
         BattleUI.RoundInitial();
+
 
         if (_currentCustomerLeft == 0)
         {
@@ -116,6 +124,12 @@ public class GameRoundManager : MonoBehaviour
     private void Start()
     {
         requestGenerator.NewRequest();
+    }
+
+    IEnumerator NextRoundWaitTime()
+    {
+        yield return new WaitForSeconds(RoundWaitTime);
+        NextRound();
     }
 
 

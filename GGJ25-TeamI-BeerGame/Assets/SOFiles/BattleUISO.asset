@@ -26,3 +26,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 879aa22762031234d8d9125fc8bfed68, type: 3}
   skillName: []
   skillPicture: []
+  beerObj:
+  - {fileID: 11400000, guid: 51dc3912de6d2514a8cf66f19f2a689e, type: 2}
+  - {fileID: 11400000, guid: 9ecf348ee0debe94492795f901876431, type: 2}
+  - {fileID: 11400000, guid: b4d3aee1fe09f2647b48462269e6f39b, type: 2}
+  cupObj:
+  - {fileID: 11400000, guid: 7b8f7a8e9314c6c46ab958588628dd81, type: 2}
+  - {fileID: 11400000, guid: f1c8c8821c90b184f9bffc10d809691e, type: 2}
+  - {fileID: 11400000, guid: 29ae5c62a3174b24a81ba8b3ef0cbf00, type: 2}

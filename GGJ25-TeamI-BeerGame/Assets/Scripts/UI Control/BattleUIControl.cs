@@ -19,6 +19,7 @@ public class BattleUIControl : MonoBehaviour
     [SerializeField] string Player2Left = "left";
     [SerializeField] string Player2Right = "right";
     [SerializeField] string Player2Submit = "[0]";
+    [SerializeField] float SubmitTime = 3f;
 
     private int _currentP1Select = 0;
     private int _currentP2Select = 0;
@@ -87,6 +88,12 @@ public class BattleUIControl : MonoBehaviour
         player2TimeLeft.visible = false;
         player1BubbleRatio.visible = false;
         player2BubbleRatio.visible = false;
+
+        P1Can.SetActive(false);
+        P1Cup.SetActive(false);
+        P2Can.SetActive(false);
+        P2Cup.SetActive(false);
+
         gameRoundManager.ChangePhase(1, 1);
         gameRoundManager.ChangePhase(2, 1);
         customerLeft.text = gameRoundManager.GetCurrentCustomerLeft().ToString();
@@ -101,6 +108,12 @@ public class BattleUIControl : MonoBehaviour
             int phaseID1 = gameRoundManager.GetPlayer1Phase();
 
             _currentP1Select = 0;
+
+            player1BubbleRatio.visible = false;
+
+            P1Can.SetActive(false);
+            P1Cup.SetActive(false);
+
 
             if (phaseID1 == 1)
             {
@@ -140,6 +153,11 @@ public class BattleUIControl : MonoBehaviour
             int phaseID2 = gameRoundManager.GetPlayer2Phase();
             _currentP2Select = 0;
 
+            player2BubbleRatio.visible = false;
+
+            P2Can.SetActive(false);
+            P2Cup.SetActive(false);
+
             if (phaseID2 == 1)
             {
                 player2SelectPic.visible = true;
@@ -157,7 +175,7 @@ public class BattleUIControl : MonoBehaviour
 
                 player2SelectPic.style.backgroundImage = new StyleBackground(battleUISO.cupPicture[0]);
             }
-            else
+            else if (phaseID2 == 3)
             {
                 player2SelectPic.visible = false;
                 player2LeftPic.visible = false;
@@ -165,6 +183,10 @@ public class BattleUIControl : MonoBehaviour
 
                 P2Can.SetActive(true);
                 P2Cup.SetActive(true);
+            }
+            else
+            {
+                P2Cup.SetActive(false);
             }
         }
     }
@@ -298,9 +320,20 @@ public class BattleUIControl : MonoBehaviour
             }
             if (Input.GetKeyDown(Player1Submit))
             {
-                if (gameRoundManager.GetPlayer1Phase() == 1) gameRoundManager.SelectBeer(1, _currentP1Select);
-                else gameRoundManager.SelectCup(1, _currentP1Select);
+                if (gameRoundManager.GetPlayer1Phase() == 1)
+                {
+                    P1Can.GetComponent<BeerHandler>().SelectBeer(_currentP1Select);
+                    gameRoundManager.SelectBeer(1, _currentP1Select);
+                }
+                else
+                {
+                    P1Cup.GetComponent<CupHandler>().SelectCup(_currentP1Select);
+                    gameRoundManager.SelectCup(1, _currentP1Select);
+                }
+
+
                 gameRoundManager.NextPhase(1);
+                
             }
         }
 
@@ -321,15 +354,23 @@ public class BattleUIControl : MonoBehaviour
             }
             if (Input.GetKeyDown(Player2Submit))
             {
-                if (gameRoundManager.GetPlayer2Phase() == 1) gameRoundManager.SelectBeer(2, _currentP1Select);
-                else gameRoundManager.SelectCup(2, _currentP1Select);
+                if (gameRoundManager.GetPlayer2Phase() == 1)
+                {
+                    P2Can.GetComponent<BeerHandler>().SelectBeer(_currentP2Select);
+                    gameRoundManager.SelectBeer(2, _currentP2Select);
+                }
+                else
+                {
+                    P2Cup.GetComponent<CupHandler>().SelectCup(_currentP2Select);
+                    gameRoundManager.SelectCup(2, _currentP2Select);
+                }
                 gameRoundManager.NextPhase(2);
             }
         }
 
         if (_p1StartCount)
         {
-            float tempTime1 = 3-Time.time + _p1CountTime; 
+            float tempTime1 = SubmitTime - Time.time + _p1CountTime;
 
             if (tempTime1 < 0 ) tempTime1 = 0;
             player1TimeLeft.text = tempTime1.ToString("0.0");
@@ -344,7 +385,7 @@ public class BattleUIControl : MonoBehaviour
        
         if (_p2StartCount)
         {
-            float tempTime2 = 3 - Time.time + _p2CountTime;
+            float tempTime2 = SubmitTime - Time.time + _p2CountTime;
 
             if (tempTime2 < 0) tempTime2 = 0;
             player2TimeLeft.text = tempTime2.ToString("0.0");

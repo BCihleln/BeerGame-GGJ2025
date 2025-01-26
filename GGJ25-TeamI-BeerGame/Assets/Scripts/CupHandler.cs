@@ -8,6 +8,7 @@ using System.Collections;
 
 public class CupHandler : MonoBehaviour
 {
+    [SerializeField] BattleUISO battleUISO;
     public Transform canTransform;
     public Transform canTransform2;
     public Transform cupEdgeL;
@@ -37,6 +38,12 @@ public class CupHandler : MonoBehaviour
     [SerializeField] private bool spilled = false;
 
     // private float bubbleDecayRate = 0.01f;
+
+    public void SelectCup(int cupID)
+    {
+        chosenCup = battleUISO.cupObj[cupID];
+        Restart();
+    }
 
     private void Start() {
         Restart();
@@ -140,6 +147,9 @@ public class CupHandler : MonoBehaviour
         curFluid = 0f;
         SetSprites();
         AdjustScale();
+
+
+
     }
 
     private void SetSprites(){

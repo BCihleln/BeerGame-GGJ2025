@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject P2BeerWrong;
     [SerializeField] GameObject P1CupWrong;
     [SerializeField] GameObject P2CupWrong;
-
+   
 
 
     public static GameManager instance;
@@ -50,11 +50,13 @@ public class GameManager : MonoBehaviour
             cupP1.DeactivateSpill();
             p1Spilled = false;
             cupP1.Restart();
+            gameRoundManager.ChangePhase(1, 1);
         }
         if(p2Spilled && Time.time - p2SpillTime > 1f){
             cupP2.DeactivateSpill();
             p2Spilled = false;
             cupP2.Restart();
+            gameRoundManager.ChangePhase(2, 1);
         }
 
         if (Input.GetKeyDown(P1SendKey) && gameRoundManager.GetPlayer1Phase() == 3)
@@ -75,7 +77,8 @@ public class GameManager : MonoBehaviour
                 return;
             }
 
-
+            gameRoundManager.NextPhase(1);
+            SendBeer(1);
 
 
         }
@@ -97,6 +100,8 @@ public class GameManager : MonoBehaviour
                 P2CupWrong.SetActive(true);
                 return;
             }
+            gameRoundManager.NextPhase(2);
+            SendBeer(2);
         }
     }
 
@@ -132,7 +137,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        float p1Distance = Mathf.Abs(requestGenerator.GetCurrentPercent()- cupP1.GetPercentage());
+        float p1Distance = Mathf.Abs(requestGenerator.GetCurrentPercent() - cupP1.GetPercentage());
         float p2Distance = Mathf.Abs(requestGenerator.GetCurrentPercent() - cupP2.GetPercentage());
 
         if (p1Distance < p2Distance) gameRoundManager.GetPoint(1);
