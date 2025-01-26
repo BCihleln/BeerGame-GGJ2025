@@ -9,9 +9,11 @@ using System.Collections;
 public class CupHandler : MonoBehaviour
 {
     public Transform canTransform;
+    public Transform canTransform2;
     public Transform cupEdgeL;
     public Transform cupEdgeR;
     public Transform pourPoint;
+    public Transform pourPoint2;
 
     private float maxVolume = 200000f;
     private float curBubble = 0f;
@@ -54,7 +56,16 @@ public class CupHandler : MonoBehaviour
         else{
             streamRenderer.sprite = null;
         }
-        if(pourPoint.position.x >= cupEdgeL.position.x && pourPoint.position.x <= cupEdgeR.position.x){
+        if(!spilled && pourPoint.position.x >= cupEdgeL.position.x && pourPoint.position.x <= cupEdgeR.position.x){
+            curFluid += fluidSpeed;
+            curBubble += bubbleSpeed;
+            AdjustScale();
+        }
+
+        getSpeed = GetPouringSpeed(canTransform2.eulerAngles.z);
+        fluidSpeed = getSpeed[0];
+        bubbleSpeed = getSpeed[1];
+        if(!spilled && pourPoint2.position.x >= cupEdgeL.position.x && pourPoint2.position.x <= cupEdgeR.position.x){
             curFluid += fluidSpeed;
             curBubble += bubbleSpeed;
             AdjustScale();
@@ -73,7 +84,6 @@ public class CupHandler : MonoBehaviour
     private List<float> GetPouringSpeed(float tiltAngle)
     {
         List<float> returnVal = new List<float> { 0f, 0f };
-        if(spilled) return returnVal;
         tiltAngle-=90f;
         tiltAngle = math.max(tiltAngle, 0f);
         returnVal[0] = tiltAngle * chosenBottle.speedFactor * chosenBottle.beerPercentage[0];
