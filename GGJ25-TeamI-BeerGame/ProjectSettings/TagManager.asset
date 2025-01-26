@@ -50,8 +50,14 @@ TagManager:
   - name: Bubble
     uniqueID: 1930030243
     locked: 0
+  - name: Bar
+    uniqueID: 289128701
+    locked: 0
   - name: Item
     uniqueID: 1812775667
+    locked: 0
+  - name: Spill
+    uniqueID: 632692751
     locked: 0
   m_RenderingLayers:
   - Default
