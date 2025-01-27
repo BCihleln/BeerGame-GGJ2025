@@ -7,8 +7,8 @@ public class GameRoundManager : MonoBehaviour
     [SerializeField] BattleUIControl BattleUI;
     [SerializeField] RequestGenerator requestGenerator;
     [SerializeField] UnityEvent OnGameEnd;
-    [SerializeField] GameObject P1RountEnd;
-    [SerializeField] GameObject P2RountEnd;
+    [SerializeField] GameObject Player1RoundEndUI; // Round end UI
+    [SerializeField] GameObject Player2RoundEndUI; // Round end UI
     [SerializeField] float RoundWaitTime = 2f;
 
     private int _currentCustomerLeft = 7;
@@ -79,9 +79,9 @@ public class GameRoundManager : MonoBehaviour
 
             BattleUI.Player1GetPoint(_player1Point);
 
-            P1RountEnd.SetActive(true);
+            Player1RoundEndUI.SetActive(true);
 
-            if (_player1Point == 4) ; //call player1 win
+            if (_player1Point == 4) ; //TODO: call player1 win
 
         }
         else
@@ -90,9 +90,9 @@ public class GameRoundManager : MonoBehaviour
 
             BattleUI.Player2GetPoint(_player2Point);
 
-            P2RountEnd.SetActive(true);
+            Player2RoundEndUI.SetActive(true);
 
-            if (_player2Point == 4) ; //call player2 win
+            if (_player2Point == 4) ; //TODO: call player2 win
         }
 
         StartCoroutine(NextRoundWaitTime());
@@ -114,9 +114,9 @@ public class GameRoundManager : MonoBehaviour
         BattleUI.RoundInitial();
 
 
-        if (_currentCustomerLeft == 0)
+        if (_currentCustomerLeft <= 0)
         {
-            //game end
+            //TODO: game end
         }
 
     }

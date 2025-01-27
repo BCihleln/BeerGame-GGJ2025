@@ -1,4 +1,3 @@
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -6,8 +5,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] BattleUIControl battleUI;
     [SerializeField] GameRoundManager gameRoundManager;
     [SerializeField] RequestGenerator requestGenerator;
-    [SerializeField] UnityEngine.KeyCode P1SendKey;
-    [SerializeField] UnityEngine.KeyCode P2SendKey;
+    [SerializeField] KeyCode P1SendKey;
+    [SerializeField] KeyCode P2SendKey;
     [SerializeField] GameObject P1NoFull;
     [SerializeField] GameObject P2NoFull;
     [SerializeField] GameObject P1BeerWrong;

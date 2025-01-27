@@ -2,8 +2,6 @@ using Unity.Mathematics;
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Runtime.CompilerServices;
 using System.Collections;
 
 public class CupHandler : MonoBehaviour
@@ -147,9 +145,6 @@ public class CupHandler : MonoBehaviour
         curFluid = 0f;
         SetSprites();
         AdjustScale();
-
-
-
     }
 
     private void SetSprites(){
