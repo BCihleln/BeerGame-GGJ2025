@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4006568514874351144}
   - component: {fileID: 8174646004140566067}
   - component: {fileID: 5655354570972215346}
-  - component: {fileID: 5799937418690520046}
+  - component: {fileID: -4432514609438382202}
   m_Layer: 0
   m_Name: ClinkingDisplay
   m_TagString: Untagged
@@ -99,7 +99,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7fe57bb99ae9148d89bcf75e73a79de9, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 7fe57bb99ae9148d89bcf75e73a79de9, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -186,7 +186,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5799937418690520046
+--- !u!114 &-4432514609438382202
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -195,7 +195,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2150650774521408101}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4822755ac6404f4b959de3c22d137a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 6fc1b256f93e325409e33b80b8396648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfDestoryTime: 2
+  disableDelay: 2
+  onDisableEvent:
+    m_PersistentCalls:
+      m_Calls: []
