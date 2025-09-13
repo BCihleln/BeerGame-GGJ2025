@@ -67,8 +67,8 @@ public class BattleUIControl : MonoBehaviour
             player1PointPicture[i].visible = false;
             player2PointPicture[i].visible = false;
         }
-        gameRoundManager.ChangePhase(1, 1);
-        gameRoundManager.ChangePhase(2, 1);
+        gameRoundManager.RestartRound(1);
+        gameRoundManager.RestartRound(2);
         customerLeft.text = gameRoundManager.GetCurrentCustomerLeft().ToString();
         
         for (int i = 1; i < 4; i++)
@@ -92,8 +92,8 @@ public class BattleUIControl : MonoBehaviour
         P2Can.SetActive(false);
         P2Cup.SetActive(false);
 
-        gameRoundManager.ChangePhase(1, 1);
-        gameRoundManager.ChangePhase(2, 1);
+        gameRoundManager.RestartRound(1);
+        gameRoundManager.RestartRound(2);
         customerLeft.text = gameRoundManager.GetCurrentCustomerLeft().ToString();
     }
 
@@ -103,7 +103,7 @@ public class BattleUIControl : MonoBehaviour
     {
         if (playerID == 1)
         {
-            int phaseID1 = gameRoundManager.GetPlayer1Phase();
+            var phaseID1 = gameRoundManager.GetPlayer1Phase();
 
             _currentP1Select = 0;
 
@@ -113,7 +113,7 @@ public class BattleUIControl : MonoBehaviour
             P1Cup.SetActive(false);
 
 
-            if (phaseID1 == 1)
+            if (phaseID1 == GameRoundManager.GamePhase.SelectBeer)
             {
                 player1SelectPic.visible = true;
                 player1LeftPic.visible = true;
@@ -122,7 +122,7 @@ public class BattleUIControl : MonoBehaviour
                 player1SelectPic.style.backgroundImage = new StyleBackground(battleUISO.beerPicture[0]);
 
             }
-            else if (phaseID1 == 2)
+            else if (phaseID1 == GameRoundManager.GamePhase.SelectCup)
             {
                 player1SelectPic.visible = true;
                 player1LeftPic.visible = true;
@@ -130,7 +130,7 @@ public class BattleUIControl : MonoBehaviour
 
                 player1SelectPic.style.backgroundImage = new StyleBackground(battleUISO.cupPicture[0]);
             }
-            else if (phaseID1 == 3)
+            else if (phaseID1 == GameRoundManager.GamePhase.Pouring)
             {
                 player1SelectPic.visible = false;
                 player1LeftPic.visible = false;
@@ -148,7 +148,7 @@ public class BattleUIControl : MonoBehaviour
         }
         else
         {
-            int phaseID2 = gameRoundManager.GetPlayer2Phase();
+            var phaseID2 = gameRoundManager.GetPlayer2Phase();
             _currentP2Select = 0;
 
             player2BubbleRatio.visible = false;
@@ -156,7 +156,7 @@ public class BattleUIControl : MonoBehaviour
             P2Can.SetActive(false);
             P2Cup.SetActive(false);
 
-            if (phaseID2 == 1)
+            if (phaseID2 == GameRoundManager.GamePhase.SelectBeer)
             {
                 player2SelectPic.visible = true;
                 player2LeftPic.visible = true;
@@ -165,7 +165,7 @@ public class BattleUIControl : MonoBehaviour
                 player2SelectPic.style.backgroundImage = new StyleBackground(battleUISO.beerPicture[0]);
 
             }
-            else if (phaseID2 == 2)
+            else if (phaseID2 == GameRoundManager.GamePhase.SelectCup)
             {
                 player2SelectPic.visible = true;
                 player2LeftPic.visible = true;
@@ -173,7 +173,7 @@ public class BattleUIControl : MonoBehaviour
 
                 player2SelectPic.style.backgroundImage = new StyleBackground(battleUISO.cupPicture[0]);
             }
-            else if (phaseID2 == 3)
+            else if (phaseID2 == GameRoundManager.GamePhase.Pouring)
             {
                 player2SelectPic.visible = false;
                 player2LeftPic.visible = false;
@@ -192,7 +192,7 @@ public class BattleUIControl : MonoBehaviour
     {
         if (playerID == 1)
         {
-            if (gameRoundManager.GetPlayer1Phase() == 1)
+            if (gameRoundManager.GetPlayer1Phase() == GameRoundManager.GamePhase.SelectBeer)
             {
                 player1SelectPic.style.backgroundImage = new StyleBackground(battleUISO.beerPicture[_currentP1Select]);
             }
@@ -203,7 +203,7 @@ public class BattleUIControl : MonoBehaviour
         }
         else
         {
-            if (gameRoundManager.GetPlayer2Phase() == 1)
+            if (gameRoundManager.GetPlayer2Phase() == GameRoundManager.GamePhase.SelectBeer)
             {
                 player2SelectPic.style.backgroundImage = new StyleBackground(battleUISO.beerPicture[_currentP2Select]);
             }
@@ -302,7 +302,7 @@ public class BattleUIControl : MonoBehaviour
     {
         //player1
 
-        if (gameRoundManager.GetPlayer1Phase() != 3)
+        if (gameRoundManager.GetPlayer1Phase() != GameRoundManager.GamePhase.Pouring)
         {
             if (Input.GetKeyDown(Player1Left))
             {
@@ -318,7 +318,7 @@ public class BattleUIControl : MonoBehaviour
             }
             if (Input.GetKeyDown(Player1Submit))
             {
-                if (gameRoundManager.GetPlayer1Phase() == 1)
+                if (gameRoundManager.GetPlayer1Phase() == GameRoundManager.GamePhase.SelectBeer)
                 {
                     P1Can.GetComponent<BeerHandler>().SelectBeer(_currentP1Select);
                     gameRoundManager.SelectBeer(1, _currentP1Select);
@@ -336,7 +336,7 @@ public class BattleUIControl : MonoBehaviour
         }
 
         //player2
-        if (gameRoundManager.GetPlayer2Phase() != 3)
+        if (gameRoundManager.GetPlayer2Phase() != GameRoundManager.GamePhase.Pouring)
         {
             if (Input.GetKeyDown(Player2Left))
             {
@@ -352,7 +352,7 @@ public class BattleUIControl : MonoBehaviour
             }
             if (Input.GetKeyDown(Player2Submit))
             {
-                if (gameRoundManager.GetPlayer2Phase() == 1)
+                if (gameRoundManager.GetPlayer2Phase() == GameRoundManager.GamePhase.SelectBeer)
                 {
                     P2Can.GetComponent<BeerHandler>().SelectBeer(_currentP2Select);
                     gameRoundManager.SelectBeer(2, _currentP2Select);

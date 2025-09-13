@@ -49,16 +49,16 @@ public class GameManager : MonoBehaviour
             cupP1.DeactivateSpill();
             p1Spilled = false;
             cupP1.Restart();
-            gameRoundManager.ChangePhase(1, 1);
+            gameRoundManager.RestartRound(1);
         }
         if(p2Spilled && Time.time - p2SpillTime > 1f){
             cupP2.DeactivateSpill();
             p2Spilled = false;
             cupP2.Restart();
-            gameRoundManager.ChangePhase(2, 1);
+            gameRoundManager.RestartRound(2);
         }
 
-        if (Input.GetKeyDown(P1SendKey) && gameRoundManager.GetPlayer1Phase() == 3)
+        if (Input.GetKeyDown(P1SendKey) && gameRoundManager.GetPlayer1Phase() == GameRoundManager.GamePhase.Pouring)
         {
             if (cupP1.GetPercentage() == -1)
             {
@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
             if (gameRoundManager.GetSelectBeer(1) != requestGenerator.GetCurrentBeer())
             {
                 P1BeerWrong.SetActive(true);
+
                 return;
             }
             if (gameRoundManager.GetSelectCup(1) != requestGenerator.GetCurrentCup())
@@ -81,8 +82,8 @@ public class GameManager : MonoBehaviour
 
 
         }
-        
-        if (Input.GetKeyDown(P2SendKey) && gameRoundManager.GetPlayer2Phase() == 3)
+
+        if (Input.GetKeyDown(P2SendKey) && gameRoundManager.GetPlayer2Phase() == GameRoundManager.GamePhase.Pouring)
         {
             if (cupP2.GetPercentage() == -1)
             {
@@ -109,12 +110,12 @@ public class GameManager : MonoBehaviour
     {
         if (playerID == 1)
         {
-            if (gameRoundManager.GetPlayer2Phase() == 4) JudgeRoundResult();
+            if (gameRoundManager.GetPlayer2Phase() == GameRoundManager.GamePhase.SubmitBeer) JudgeRoundResult();
             else battleUI.StartCount(2);
         }
         else
         {
-            if (gameRoundManager.GetPlayer1Phase() == 4) JudgeRoundResult();
+            if (gameRoundManager.GetPlayer1Phase() == GameRoundManager.GamePhase.SubmitBeer) JudgeRoundResult();
             else battleUI.StartCount(1);
         }
 

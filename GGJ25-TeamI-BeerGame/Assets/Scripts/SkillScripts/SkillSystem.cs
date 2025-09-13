@@ -27,7 +27,7 @@ public class SkillSystem : MonoBehaviour
 
     private void Update()
     {
-        if (gameRoundManager.GetPlayer1Phase() == 3)
+        if (gameRoundManager.GetPlayer1Phase() == GameRoundManager.GamePhase.Pouring)
         {
             for (int i = 0; i < 3; i++) 
             {
@@ -60,7 +60,7 @@ public class SkillSystem : MonoBehaviour
             }
         }
 
-        if (gameRoundManager.GetPlayer2Phase() == 3)
+        if (gameRoundManager.GetPlayer2Phase() == GameRoundManager.GamePhase.Pouring)
         {
             for (int i = 0; i < 3; i++)
             {
