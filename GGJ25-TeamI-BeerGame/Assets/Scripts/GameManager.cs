@@ -68,17 +68,18 @@ public class GameManager : MonoBehaviour
             if (gameRoundManager.GetSelectBeer(1) != requestGenerator.GetCurrentBeer())
             {
                 P1BeerWrong.SetActive(true);
-
+                gameRoundManager.RestartRound(1);
                 return;
             }
             if (gameRoundManager.GetSelectCup(1) != requestGenerator.GetCurrentCup())
             {
                 P1CupWrong.SetActive(true);
+                gameRoundManager.RestartRound(1);
                 return;
             }
 
-            gameRoundManager.NextPhase(1);
             SendBeer(1);
+            gameRoundManager.NextPhase(1);
 
 
         }
@@ -93,15 +94,18 @@ public class GameManager : MonoBehaviour
             if (gameRoundManager.GetSelectBeer(2) != requestGenerator.GetCurrentBeer())
             {
                 P2BeerWrong.SetActive(true);
+                gameRoundManager.RestartRound(2);
                 return;
             }
             if (gameRoundManager.GetSelectCup(2) != requestGenerator.GetCurrentCup())
             {
                 P2CupWrong.SetActive(true);
+                gameRoundManager.RestartRound(2);
                 return;
             }
-            gameRoundManager.NextPhase(2);
+
             SendBeer(2);
+            gameRoundManager.NextPhase(2);
         }
     }
 
