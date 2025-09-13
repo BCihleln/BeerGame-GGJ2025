@@ -198,11 +198,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &154363308 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2150650774521408101, guid: fb79ce72b2a16be4ba622278fe6c8b0d, type: 3}
-  m_PrefabInstance: {fileID: 909900119}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &257948886 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 7384148837723848341, guid: 3bf1a2fb3b1548546a6cd0cb537222e1, type: 3}
@@ -377,8 +372,8 @@ GameObject:
   m_Component:
   - component: {fileID: 334751360}
   - component: {fileID: 334751363}
-  - component: {fileID: 334751362}
   - component: {fileID: 334751361}
+  - component: {fileID: 334751364}
   m_Layer: 5
   m_Name: P1WrongCupText
   m_TagString: Untagged
@@ -436,34 +431,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &334751362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 334751359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7158599345cd8df4e8742b8e44a73e51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disappairTime: 1
-  OnTimeUp:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 334751359}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!222 &334751363
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -472,6 +439,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334751359}
   m_CullTransparentMesh: 1
+--- !u!114 &334751364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334751359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc1b256f93e325409e33b80b8396648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableDelay: 2
+  onDisableEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &381748061
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,8 +601,8 @@ MonoBehaviour:
   OnGameEnd:
     m_PersistentCalls:
       m_Calls: []
-  P1RountEnd: {fileID: 154363308}
-  P2RountEnd: {fileID: 1917111206}
+  Player1RoundEndUI: {fileID: 0}
+  Player2RoundEndUI: {fileID: 0}
   RoundWaitTime: 2
 --- !u!4 &437729307 stripped
 Transform:
@@ -881,8 +864,8 @@ GameObject:
   m_Component:
   - component: {fileID: 894819229}
   - component: {fileID: 894819232}
-  - component: {fileID: 894819231}
   - component: {fileID: 894819230}
+  - component: {fileID: 894819233}
   m_Layer: 5
   m_Name: P1WrongBeerText
   m_TagString: Untagged
@@ -940,34 +923,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &894819231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 894819228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7158599345cd8df4e8742b8e44a73e51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disappairTime: 1
-  OnTimeUp:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 894819228}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!222 &894819232
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -976,6 +931,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 894819228}
   m_CullTransparentMesh: 1
+--- !u!114 &894819233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894819228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc1b256f93e325409e33b80b8396648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableDelay: 2
+  onDisableEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &909900119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1059,8 +1030,8 @@ GameObject:
   m_Component:
   - component: {fileID: 922895090}
   - component: {fileID: 922895093}
-  - component: {fileID: 922895092}
   - component: {fileID: 922895091}
+  - component: {fileID: 922895094}
   m_Layer: 5
   m_Name: P2WrongBeerText
   m_TagString: Untagged
@@ -1118,34 +1089,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &922895092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 922895089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7158599345cd8df4e8742b8e44a73e51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disappairTime: 1
-  OnTimeUp:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 922895089}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!222 &922895093
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1154,6 +1097,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922895089}
   m_CullTransparentMesh: 1
+--- !u!114 &922895094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922895089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc1b256f93e325409e33b80b8396648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableDelay: 2
+  onDisableEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1036513863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1612,8 +1571,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1512935993}
   - component: {fileID: 1512935992}
-  - component: {fileID: 1512935991}
   - component: {fileID: 1512935990}
+  - component: {fileID: 1512935994}
   m_Layer: 5
   m_Name: P2WrongCupText
   m_TagString: Untagged
@@ -1651,34 +1610,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1512935991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1512935989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7158599345cd8df4e8742b8e44a73e51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disappairTime: 1
-  OnTimeUp:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1512935989}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!222 &1512935992
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1707,6 +1638,22 @@ RectTransform:
   m_AnchoredPosition: {x: 300, y: -180}
   m_SizeDelta: {x: 220, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1512935994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512935989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc1b256f93e325409e33b80b8396648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableDelay: 2
+  onDisableEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1675230759
 GameObject:
   m_ObjectHideFlags: 0
@@ -2238,11 +2185,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823312609}
   m_CullTransparentMesh: 1
---- !u!1 &1917111206 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2150650774521408101, guid: fb79ce72b2a16be4ba622278fe6c8b0d, type: 3}
-  m_PrefabInstance: {fileID: 1776725882}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1932998813
 GameObject:
   m_ObjectHideFlags: 0
@@ -2253,8 +2195,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1932998814}
   - component: {fileID: 1932998817}
-  - component: {fileID: 1932998816}
   - component: {fileID: 1932998815}
+  - component: {fileID: 1932998818}
   m_Layer: 5
   m_Name: P1NoFullText
   m_TagString: Untagged
@@ -2312,34 +2254,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1932998816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932998813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7158599345cd8df4e8742b8e44a73e51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disappairTime: 1
-  OnTimeUp:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1932998813}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!222 &1932998817
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2348,6 +2262,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932998813}
   m_CullTransparentMesh: 1
+--- !u!114 &1932998818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932998813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc1b256f93e325409e33b80b8396648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableDelay: 2
+  onDisableEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1973389782
 GameObject:
   m_ObjectHideFlags: 0
@@ -2545,8 +2475,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2147215620}
   - component: {fileID: 2147215623}
-  - component: {fileID: 2147215622}
   - component: {fileID: 2147215621}
+  - component: {fileID: 2147215624}
   m_Layer: 5
   m_Name: P2NoFullText
   m_TagString: Untagged
@@ -2604,34 +2534,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2147215622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2147215619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7158599345cd8df4e8742b8e44a73e51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disappairTime: 1
-  OnTimeUp:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2147215619}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!222 &2147215623
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2640,6 +2542,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2147215619}
   m_CullTransparentMesh: 1
+--- !u!114 &2147215624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147215619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc1b256f93e325409e33b80b8396648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableDelay: 2
+  onDisableEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &666155386601739894
 PrefabInstance:
   m_ObjectHideFlags: 0
