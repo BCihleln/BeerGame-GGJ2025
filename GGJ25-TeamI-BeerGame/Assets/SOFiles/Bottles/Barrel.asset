@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e42b51f2eea28144b8ab429ab1da9101, type: 3}
-  m_Name: TinCan
+  m_Name: Barrel
   m_EditorClassIdentifier: 
-  fluidID: 2
+  fluidID: 0
   thresholdAngle:
-  - 10
   - 20
-  - 50
+  - 40
+  - 60
   foamPercentage:
   - 0
-  - 0
   - 0.3
-  - 0.7
+  - 0.6
+  - 0.9
   beerPercentage:
   - 0
-  - 1
   - 0.7
-  - 0.3
-  speedFactor: 0.8
-  bottleSprite: {fileID: 5753882289245731343, guid: e004b7d1a2f01be4ea7ac3b4e988f887, type: 3}
-  offset: {x: -0.3, y: 3.5, z: 0}
-  streamSprite: {fileID: -7265484682217735617, guid: e175c2757c147ee4ca18d8da81ed14da, type: 3}
-  dripSprite: {fileID: -8489766732707969921, guid: 3598a11de317f844db16771a6613cbc6, type: 3}
+  - 0.4
+  - 0.1
+  speedFactor: 1.2
+  bottleSprite: {fileID: 21300000, guid: 8d3c98b00bab5f6449ab72085d9622cf, type: 3}
+  offset: {x: -0.8, y: 6.1, z: 0}
+  streamSprite: {fileID: -7625886458666803610, guid: f4ee4235bea619f42ba425931999ec72, type: 3}
+  dripSprite: {fileID: 8610922148356791996, guid: a0c47107609e5b643bf72e64b451ab1b, type: 3}

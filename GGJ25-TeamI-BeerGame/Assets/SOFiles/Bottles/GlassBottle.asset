@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e42b51f2eea28144b8ab429ab1da9101, type: 3}
-  m_Name: Barrel
+  m_Name: GlassBottle
   m_EditorClassIdentifier: 
-  fluidID: 0
+  fluidID: 1
   thresholdAngle:
-  - 20
-  - 40
+  - 10
+  - 30
   - 60
   foamPercentage:
   - 0
-  - 0.3
-  - 0.6
-  - 0.9
+  - 0.2
+  - 0.5
+  - 0.8
   beerPercentage:
-  - 0
-  - 0.7
-  - 0.4
-  - 0.1
-  speedFactor: 1.2
-  bottleSprite: {fileID: -850384010442605852, guid: f314abb6baf3c8c438199881dcbc0611, type: 3}
-  offset: {x: -0.8, y: 6.1, z: 0}
-  streamSprite: {fileID: -7625886458666803610, guid: f4ee4235bea619f42ba425931999ec72, type: 3}
-  dripSprite: {fileID: 8610922148356791996, guid: a0c47107609e5b643bf72e64b451ab1b, type: 3}
+  - 1
+  - 0.8
+  - 0.5
+  - 0.2
+  speedFactor: 1
+  bottleSprite: {fileID: 21300000, guid: 0b98fd7eff540e64683de77438b3d108, type: 3}
+  offset: {x: 0, y: 8.4, z: 0}
+  streamSprite: {fileID: -7301910767786983534, guid: 96fa45e2cf9d63e4d90808aae7de3e95, type: 3}
+  dripSprite: {fileID: 7010504410360093174, guid: 6bbcc00919bfc4141af7c206a4207b98, type: 3}
