@@ -23,7 +23,7 @@ MonoBehaviour:
   maxHeight: 1
   fluidHeight: 0.96
   bubbleHeight: 2.83
-  maxVolume: 120000
+  maxVolume: 12000
   fillLine: 3.14
   fillSprite: {fileID: 21300000, guid: 994c768e03034fd4a9b2d6acca0a76c1, type: 3}
   spillSprite: {fileID: 5091597678581167084, guid: f22d182b015bdea449df295cf20f1234, type: 3}
