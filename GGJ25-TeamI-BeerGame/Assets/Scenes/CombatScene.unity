@@ -601,8 +601,8 @@ MonoBehaviour:
   OnGameEnd:
     m_PersistentCalls:
       m_Calls: []
-  Player1RoundEndUI: {fileID: 0}
-  Player2RoundEndUI: {fileID: 0}
+  Player1RoundEndUI: {fileID: 909900120}
+  Player2RoundEndUI: {fileID: 1776725883}
   RoundWaitTime: 2
 --- !u!4 &437729307 stripped
 Transform:
@@ -1020,6 +1020,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb79ce72b2a16be4ba622278fe6c8b0d, type: 3}
+--- !u!1 &909900120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2150650774521408101, guid: fb79ce72b2a16be4ba622278fe6c8b0d, type: 3}
+  m_PrefabInstance: {fileID: 909900119}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &922895089
 GameObject:
   m_ObjectHideFlags: 0
@@ -1970,6 +1975,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb79ce72b2a16be4ba622278fe6c8b0d, type: 3}
+--- !u!1 &1776725883 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2150650774521408101, guid: fb79ce72b2a16be4ba622278fe6c8b0d, type: 3}
+  m_PrefabInstance: {fileID: 1776725882}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1782602139
 GameObject:
   m_ObjectHideFlags: 0
