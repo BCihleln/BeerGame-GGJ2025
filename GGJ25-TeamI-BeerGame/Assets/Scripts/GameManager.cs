@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject P2BeerWrong;
     [SerializeField] GameObject P1CupWrong;
     [SerializeField] GameObject P2CupWrong;
-   
+    [SerializeField] GameObject GameEndUI;
+
 
 
     public static GameManager instance;
@@ -58,7 +59,7 @@ public class GameManager : MonoBehaviour
             gameRoundManager.RestartRound(2);
         }
 
-        if (Input.GetKeyDown(P1SendKey) && gameRoundManager.GetPlayer1Phase() == GameRoundManager.GamePhase.Pouring)
+        if (Input.GetKeyDown(P1SendKey) && gameRoundManager.GetPlayerPhase(1) == GameRoundManager.GamePhase.Pouring)
         {
             if (cupP1.GetPercentage() == -1)
             {
@@ -81,10 +82,9 @@ public class GameManager : MonoBehaviour
             SendBeer(1);
             gameRoundManager.NextPhase(1);
 
-
         }
 
-        if (Input.GetKeyDown(P2SendKey) && gameRoundManager.GetPlayer2Phase() == GameRoundManager.GamePhase.Pouring)
+        if (Input.GetKeyDown(P2SendKey) && gameRoundManager.GetPlayerPhase(2) == GameRoundManager.GamePhase.Pouring)
         {
             if (cupP2.GetPercentage() == -1)
             {
@@ -114,15 +114,14 @@ public class GameManager : MonoBehaviour
     {
         if (playerID == 1)
         {
-            if (gameRoundManager.GetPlayer2Phase() == GameRoundManager.GamePhase.SubmitBeer) JudgeRoundResult();
+            if (gameRoundManager.GetPlayerPhase(2) == GameRoundManager.GamePhase.SubmitBeer) JudgeRoundResult();
             else battleUI.StartCount(2);
         }
         else
         {
-            if (gameRoundManager.GetPlayer1Phase() == GameRoundManager.GamePhase.SubmitBeer) JudgeRoundResult();
+            if (gameRoundManager.GetPlayerPhase(1) == GameRoundManager.GamePhase.SubmitBeer) JudgeRoundResult();
             else battleUI.StartCount(1);
         }
-
     }
 
     public void JudgeRoundResult()
@@ -153,5 +152,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void GameEnd()
+    {
+        GameEndUI.SetActive(true);
+    }
+
+    public void RestartGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("IntroScene");
+    }
 
 }

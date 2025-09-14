@@ -103,7 +103,7 @@ public class BattleUIControl : MonoBehaviour
     {
         if (playerID == 1)
         {
-            var phaseID1 = gameRoundManager.GetPlayer1Phase();
+            var phaseID1 = gameRoundManager.GetPlayerPhase(1);
 
             _currentP1Select = 0;
 
@@ -148,7 +148,7 @@ public class BattleUIControl : MonoBehaviour
         }
         else
         {
-            var phaseID2 = gameRoundManager.GetPlayer2Phase();
+            var phaseID2 = gameRoundManager.GetPlayerPhase(2);
             _currentP2Select = 0;
 
             player2BubbleRatio.visible = false;
@@ -192,7 +192,7 @@ public class BattleUIControl : MonoBehaviour
     {
         if (playerID == 1)
         {
-            if (gameRoundManager.GetPlayer1Phase() == GameRoundManager.GamePhase.SelectBeer)
+            if (gameRoundManager.GetPlayerPhase(1) == GameRoundManager.GamePhase.SelectBeer)
             {
                 player1SelectPic.style.backgroundImage = new StyleBackground(battleUISO.beerPicture[_currentP1Select]);
             }
@@ -203,7 +203,7 @@ public class BattleUIControl : MonoBehaviour
         }
         else
         {
-            if (gameRoundManager.GetPlayer2Phase() == GameRoundManager.GamePhase.SelectBeer)
+            if (gameRoundManager.GetPlayerPhase(2) == GameRoundManager.GamePhase.SelectBeer)
             {
                 player2SelectPic.style.backgroundImage = new StyleBackground(battleUISO.beerPicture[_currentP2Select]);
             }
@@ -302,7 +302,7 @@ public class BattleUIControl : MonoBehaviour
     {
         //player1
 
-        if (gameRoundManager.GetPlayer1Phase() != GameRoundManager.GamePhase.Pouring)
+        if (gameRoundManager.GetPlayerPhase(1) != GameRoundManager.GamePhase.Pouring)
         {
             if (Input.GetKeyDown(Player1Left))
             {
@@ -318,7 +318,7 @@ public class BattleUIControl : MonoBehaviour
             }
             if (Input.GetKeyDown(Player1Submit))
             {
-                if (gameRoundManager.GetPlayer1Phase() == GameRoundManager.GamePhase.SelectBeer)
+                if (gameRoundManager.GetPlayerPhase(1) == GameRoundManager.GamePhase.SelectBeer)
                 {
                     P1Can.GetComponent<BeerHandler>().SelectBeer(_currentP1Select);
                     gameRoundManager.SelectBeer(1, _currentP1Select);
@@ -336,7 +336,7 @@ public class BattleUIControl : MonoBehaviour
         }
 
         //player2
-        if (gameRoundManager.GetPlayer2Phase() != GameRoundManager.GamePhase.Pouring)
+        if (gameRoundManager.GetPlayerPhase(2) != GameRoundManager.GamePhase.Pouring)
         {
             if (Input.GetKeyDown(Player2Left))
             {
@@ -352,7 +352,7 @@ public class BattleUIControl : MonoBehaviour
             }
             if (Input.GetKeyDown(Player2Submit))
             {
-                if (gameRoundManager.GetPlayer2Phase() == GameRoundManager.GamePhase.SelectBeer)
+                if (gameRoundManager.GetPlayerPhase(2) == GameRoundManager.GamePhase.SelectBeer)
                 {
                     P2Can.GetComponent<BeerHandler>().SelectBeer(_currentP2Select);
                     gameRoundManager.SelectBeer(2, _currentP2Select);

@@ -8,12 +8,12 @@ public class SkillSystem : MonoBehaviour
     [SerializeField] UnityEngine.KeyCode[] P1SkillBtn;
     [SerializeField] UnityEngine.KeyCode[] P2SkillBtn;
 
-    [SerializeField] ShakingSkill shakingSkill; //·n®Ì§O¤H®à¤l
-    //¾B¾×¹ï¤èªM¤l
-    //¾Ş§@¥´¶Ã
-    [SerializeField] SwapCupSkill swapCupSkill; //°®©[¤j®¿²¾
-    [SerializeField] PercentageSkill percentageSkill; //Å³©w²´
-    [SerializeField] ShadowSkill shadowSkill;//­«¼v
+    [SerializeField] ShakingSkill shakingSkill; //æ–æ™ƒåˆ¥äººæ¡Œå­
+    //é®æ“‹å°æ–¹æ¯å­
+    //æ“ä½œæ‰“äº‚
+    [SerializeField] SwapCupSkill swapCupSkill; //ä¹¾å¤å¤§æŒªç§»
+    [SerializeField] PercentageSkill percentageSkill; //é‘’å®šçœ¼
+    [SerializeField] ShadowSkill shadowSkill;//é‡å½±
 
     //private int[] player1Skills = new int[3];
     //private int[] player2Skills = new int[3];
@@ -27,7 +27,7 @@ public class SkillSystem : MonoBehaviour
 
     private void Update()
     {
-        if (gameRoundManager.GetPlayer1Phase() == GameRoundManager.GamePhase.Pouring)
+        if (gameRoundManager.GetPlayerPhase(1) == GameRoundManager.GamePhase.Pouring)
         {
             for (int i = 0; i < 3; i++) 
             {
@@ -35,22 +35,22 @@ public class SkillSystem : MonoBehaviour
                 {
                     switch (player1Skills[i])
                     {
-                        case 0: //·n®Ì§O¤H®à¤l
+                        case 0: //æ–æ™ƒåˆ¥äººæ¡Œå­
                             shakingSkill.MoveCup(1);
                             break;
-                        case 1: //¾B¾×¹ï¤èªM¤l
+                        case 1: //é®æ“‹å°æ–¹æ¯å­
 
                             break;
-                        case 2: //¾Ş§@¥´¶Ã
+                        case 2: //æ“ä½œæ‰“äº‚
 
                             break;
-                        case 3: //°®©[¤j®¿²¾
+                        case 3: //ä¹¾å¤å¤§æŒªç§»
                             swapCupSkill.SwapCups();
                             break;
-                        case 4: //Å³©w²´
+                        case 4: //é‘’å®šçœ¼
                             percentageSkill.P1ShowPercentage();
                             break;
-                        case 5: //­«¼v
+                        case 5: //é‡å½±
 
                             break;
                     }
@@ -60,7 +60,7 @@ public class SkillSystem : MonoBehaviour
             }
         }
 
-        if (gameRoundManager.GetPlayer2Phase() == GameRoundManager.GamePhase.Pouring)
+        if (gameRoundManager.GetPlayerPhase(2) == GameRoundManager.GamePhase.Pouring)
         {
             for (int i = 0; i < 3; i++)
             {
@@ -68,22 +68,22 @@ public class SkillSystem : MonoBehaviour
                 {
                     switch (player2Skills[i])
                     {
-                        case 0: //·n®Ì§O¤H®à¤l
+                        case 0: //æ–æ™ƒåˆ¥äººæ¡Œå­
                             shakingSkill.MoveCup(2);
                             break;
-                        case 1: //¾B¾×¹ï¤èªM¤l
+                        case 1: //é®æ“‹å°æ–¹æ¯å­
 
                             break;
-                        case 2: //¾Ş§@¥´¶Ã
+                        case 2: //æ“ä½œæ‰“äº‚
 
                             break;
-                        case 3: //°®©[¤j®¿²¾
+                        case 3: //ä¹¾å¤å¤§æŒªç§»
                             swapCupSkill.SwapCups();
                             break;
-                        case 4: //Å³©w²´
+                        case 4: //é‘’å®šçœ¼
                             percentageSkill.P2ShowPercentage();
                             break;
-                        case 5: //­«¼v
+                        case 5: //é‡å½±
 
                             break;
                     }

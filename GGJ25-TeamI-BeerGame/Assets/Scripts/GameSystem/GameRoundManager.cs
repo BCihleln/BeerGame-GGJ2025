@@ -54,8 +54,11 @@ public class GameRoundManager : MonoBehaviour
 
 
     public int GetCurrentCustomerLeft() => _currentCustomerLeft;
-    public GamePhase GetPlayer1Phase() => _player1Phase;
-    public GamePhase GetPlayer2Phase() => _player2Phase;
+    public GamePhase GetPlayerPhase(int playerID)
+    {
+        if (playerID == 1) return _player1Phase;
+        else return _player2Phase;
+    }
     public int GetPlayerPoint(int playerID)
     {
         if (playerID == 1) return _player1Point;
@@ -89,7 +92,11 @@ public class GameRoundManager : MonoBehaviour
 
             Player1RoundEndUI.SetActive(true);
 
-            if (_player1Point == 4) ; //TODO: call player1 win
+            if (_player1Point == 4)
+            {
+                GameEnd();
+                return;
+            }
 
         }
         else
@@ -100,11 +107,20 @@ public class GameRoundManager : MonoBehaviour
 
             Player2RoundEndUI.SetActive(true);
 
-            if (_player2Point == 4) ; //TODO: call player2 win
+            if (_player2Point == 4)
+            {
+                GameEnd();
+                return;
+            }
         }
 
         StartCoroutine(NextRoundWaitTime());
 
+    }
+
+    public void GameEnd()
+    {
+        OnGameEnd.Invoke();
     }
 
     public void NextRound()
@@ -125,6 +141,8 @@ public class GameRoundManager : MonoBehaviour
         if (_currentCustomerLeft <= 0)
         {
             //TODO: game end
+            GameEnd();
+            return;
         }
 
     }
