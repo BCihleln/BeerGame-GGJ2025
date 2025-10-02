@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 public class BattleUIControl : MonoBehaviour
 {
     [SerializeField] BattleUISO battleUISO;
-    [SerializeField] SkillSO skillSOData;
+    // [SerializeField] SkillSO skillSOData;
     [SerializeField] GameRoundManager gameRoundManager;
     [SerializeField] GameManager gameManager;
     [SerializeField] GameObject P1Can;
@@ -43,10 +43,10 @@ public class BattleUIControl : MonoBehaviour
     VisualElement player2LeftPic;
     VisualElement player2RightPic;
 
-    Label[] player1SkillName = new Label[4];
-    Label[] player2SkillName = new Label[4];
-    VisualElement[] player1SkillPic = new VisualElement[4];
-    VisualElement[] player2SkillPic = new VisualElement[4];
+    // Label[] player1SkillName = new Label[4];
+    // Label[] player2SkillName = new Label[4];
+    // VisualElement[] player1SkillPic = new VisualElement[4];
+    // VisualElement[] player2SkillPic = new VisualElement[4];
     VisualElement[] player1PointPicture = new VisualElement[8];
     VisualElement[] player2PointPicture = new VisualElement[8];
 
@@ -71,13 +71,13 @@ public class BattleUIControl : MonoBehaviour
         gameRoundManager.RestartRound(2);
         customerLeft.text = gameRoundManager.GetCurrentCustomerLeft().ToString();
         
-        for (int i = 1; i < 4; i++)
-        {
-            player1SkillName[i].text = skillSOData.skillNames[skillSystem.GetSkillName(1, i)];
-            player1SkillPic[i].style.backgroundImage = new StyleBackground(skillSOData.skillPictures[skillSystem.GetSkillName(1, i)]);
-            player2SkillName[i].text = skillSOData.skillNames[skillSystem.GetSkillName(2, i)];
-            player2SkillPic[i].style.backgroundImage = new StyleBackground(skillSOData.skillPictures[skillSystem.GetSkillName(2, i)]);
-        }
+        // for (int i = 1; i < 4; i++)
+        // {
+        //     player1SkillName[i].text = skillSOData.skillNames[skillSystem.GetSkillName(1, i)];
+        //     player1SkillPic[i].style.backgroundImage = new StyleBackground(skillSOData.skillPictures[skillSystem.GetSkillName(1, i)]);
+        //     player2SkillName[i].text = skillSOData.skillNames[skillSystem.GetSkillName(2, i)];
+        //     player2SkillPic[i].style.backgroundImage = new StyleBackground(skillSOData.skillPictures[skillSystem.GetSkillName(2, i)]);
+        // }
     }
 
     public void RoundInitial()
@@ -279,13 +279,13 @@ public class BattleUIControl : MonoBehaviour
         player2LeftPic = rootVisualElement.Q<VisualElement>("P2LeftSelect");
         player2RightPic = rootVisualElement.Q<VisualElement>("P2RightSelect");
 
-        for (int i = 1; i < 4; i++)
-        {
-            player1SkillName[i] = rootVisualElement.Q<Label>("P1S" + i.ToString() + "Name");
-            player2SkillName[i] = rootVisualElement.Q<Label>("P2S" + i.ToString() + "Name");
-            player1SkillPic[i] = rootVisualElement.Q<VisualElement>("P1S" + i.ToString() + "Picture");
-            player2SkillPic[i] = rootVisualElement.Q<VisualElement>("P2S" + i.ToString() + "Picture");
-        }
+        // for (int i = 1; i < 4; i++)
+        // {
+        //     player1SkillName[i] = rootVisualElement.Q<Label>("P1S" + i.ToString() + "Name");
+        //     player2SkillName[i] = rootVisualElement.Q<Label>("P2S" + i.ToString() + "Name");
+        //     player1SkillPic[i] = rootVisualElement.Q<VisualElement>("P1S" + i.ToString() + "Picture");
+        //     player2SkillPic[i] = rootVisualElement.Q<VisualElement>("P2S" + i.ToString() + "Picture");
+        // }
 
         for (int i = 1; i < 8; i++)
         {
